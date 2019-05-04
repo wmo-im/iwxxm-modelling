@@ -42,7 +42,7 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">4/29/2019 11:21:46 PM</td>
+			<td class="ObjectDetailsValue">5/5/2019 12:36:35 AM</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -697,7 +697,7 @@ function nameClassifier(name, separator)
 					<td class="TableRowBottomDashed"  colspan="3">
 						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints457" onclick="parent.toggleDiv('detailsDIVConstraints457','DetailsImageConstraints457')" />Details:
 							<div id="detailsDIVConstraints457" class="DetailsDiv" >
-							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneAdvisory.TropicalCycloneObservedConditions-5&lt;br/&gt;Description: If a geometry is defined for iwxxm:tropicalCyclonePosition/gml:Point with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:tropicalCyclonePosition/gml:Point) ) then( iwxxm:tropicalCyclonePosition/gml:Point/gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)) ) else( true() ) )&lt;br/&gt;</div>
+							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneAdvisory.TropicalCycloneObservedConditions-5&lt;br/&gt;Description: If a geometry is defined for iwxxm:tropicalCyclonePosition/gml:Point with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:tropicalCyclonePosition/gml:Point) ) then( empty(index-of(iwxxm:tropicalCyclonePosition/gml:Point/gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)), false())) ) else( true() ) )5&lt;br/&gt;</div>
 
 							</div>
 						</div>
@@ -712,7 +712,7 @@ function nameClassifier(name, separator)
 					<td class="TableRowBottomDashed"  colspan="3">
 						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints458" onclick="parent.toggleDiv('detailsDIVConstraints458','DetailsImageConstraints458')" />Details:
 							<div id="detailsDIVConstraints458" class="DetailsDiv" >
-							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneAdvisory.TropicalCycloneObservedConditions-6&lt;br/&gt;Description: If a geometry of iwxxm:cumulonimbusCloudLocation is defined with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:cumulonimbusCloudLocation//*[self::aixm:horizontalProjection or self::aixm:centreline]) ) then( iwxxm:cumulonimbusCloudLocation//*[self::aixm:Surface or self::aixm:Curve]/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)) ) else( true() ) )&lt;br/&gt;</div>
+							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneAdvisory.TropicalCycloneObservedConditions-6&lt;br/&gt;Description: If a geometry of iwxxm:cumulonimbusCloudLocation is defined with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:cumulonimbusCloudLocation//*[self::aixm:horizontalProjection or self::aixm:centreline]) ) then( empty(index-of(iwxxm:cumulonimbusCloudLocation//*[self::aixm:Surface or self::aixm:Curve]/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)), false())) ) else( true() ) )&lt;br/&gt;</div>
 
 							</div>
 						</div>
