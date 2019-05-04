@@ -42,7 +42,7 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">4/29/2019 11:15:18 PM</td>
+			<td class="ObjectDetailsValue">5/5/2019 12:29:19 AM</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -290,7 +290,7 @@ function nameClassifier(name, separator)
 					<td class="TableRowBottomDashed"  colspan="3">
 						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints265" onclick="parent.toggleDiv('detailsDIVConstraints265','DetailsImageConstraints265')" />Details:
 							<div id="detailsDIVConstraints265" class="DetailsDiv" >
-							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneSIGMET.TropicalCycloneSIGMETPositionCollection-1&lt;br/&gt;Description: If a geometry is defined for iwxxm:tropicalCyclonePosition/gml:Point with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:tropicalCyclonePosition/gml:Point) ) then( iwxxm:tropicalCyclonePosition/gml:Point/gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)) ) else ( true() ) )&lt;br/&gt;</div>
+							<div class="ObjectDetailsNotes">Pattern ID: TropicalCycloneSIGMET.TropicalCycloneSIGMETPositionCollection-1&lt;br/&gt;Description: If a geometry is defined for iwxxm:tropicalCyclonePosition/gml:Point with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:tropicalCyclonePosition/gml:Point) ) then( empty(index-of(iwxxm:tropicalCyclonePosition/gml:Point/gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)), false())) ) else ( true() ) )&lt;br/&gt;</div>
 
 							</div>
 						</div>
