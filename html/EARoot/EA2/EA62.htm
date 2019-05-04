@@ -42,7 +42,7 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">4/29/2019 11:09:33 PM</td>
+			<td class="ObjectDetailsValue">5/5/2019 12:24:22 AM</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -700,7 +700,7 @@ function nameClassifier(name, separator)
 					<td class="TableRowBottomDashed"  colspan="3">
 						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints220" onclick="parent.toggleDiv('detailsDIVConstraints220','DetailsImageConstraints220')" />Details:
 							<div id="detailsDIVConstraints220" class="DetailsDiv" >
-							<div class="ObjectDetailsNotes">Pattern ID: TAF.TAF-9&lt;br/&gt;Description: If a geometry is defined for iwxxm:aerodrome//aixm:AIP with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:aerodrome//aixm:ARP) ) then( iwxxm:aerodrome//aixm:ARP//gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)) ) else( true() ) )&lt;br/&gt;</div>
+							<div class="ObjectDetailsNotes">Pattern ID: TAF.TAF-9&lt;br/&gt;Description: If a geometry is defined for iwxxm:aerodrome//aixm:AIP with the provision of attribute srsName, attribute srsDimension must equal to 2 and attribute axisLabels must be non-empty&lt;br/&gt;Assertion: ( if( exists(iwxxm:aerodrome//aixm:ARP) ) then( empty(index-of(iwxxm:aerodrome//aixm:ARP//gml:pos/(ancestor-or-self::*[exists(@srsName)])[last()]/(@srsDimension=&#39;2&#39; and exists(@axisLabels)), false())) ) else( true() ) )&lt;br/&gt;</div>
 
 							</div>
 						</div>
