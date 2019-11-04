@@ -109,9 +109,7 @@
 			<xsl:apply-templates select="@*|node()">
 				<xsl:with-param name="prefix" select="substring-before(./XMI.content/UML:TaggedValue[@tag='xmlns']/@value,'#')"/>
 			</xsl:apply-templates>
-			<!-- Pending WMO Codes Registry's further support on http://codes.wmo.int/common/nil
 			<xsl:call-template name="nilReason"/>
-			-->
 			<xsl:call-template name="extension">
 				<xsl:with-param name="prefix" select="substring-before(./XMI.content/UML:TaggedValue[@tag='xmlns']/@value,'#')"/>
 			</xsl:call-template>
@@ -230,7 +228,6 @@
 	</xsl:template>
 
 	<!-- Add a schematron rule to check the nilReason attributes -->
-	<!-- Pending WMO Codes Registry's further support on http://codes.wmo.int/common/nil
 	<xsl:template name="nilReason">
 		<xsl:element name='sch:pattern'>
 			<xsl:attribute name="id">
@@ -238,18 +235,17 @@
 			</xsl:attribute>
 			<xsl:element name='sch:rule'>
 				<xsl:attribute name="context">
-					<xsl:value-of select="'//*'"/>
+					<xsl:value-of select="'//iwxxm:*'"/>
 				</xsl:attribute>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="'@nilReason = document(''codes.wmo.int-common-nil.rdf'')/rdf:RDF/*/skos:member/*/@*[local-name()=''about'']'"/>
+						<xsl:value-of select="'( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-common-nil.rdf'')/rdf:RDF/*/skos:member/*/@*[local-name()=''about''] ) else( true() ) )'"/>
 					</xsl:attribute>
 					<xsl:value-of select="string('IWXXM.nilReasonCheck: nilReason attributes should be a member of http://codes.wmo.int/common/nil')"/>
 				</xsl:element>
 			</xsl:element>
 		</xsl:element>
 	</xsl:template>
-	-->
 
 	<!-- Add a schematron rule to check the extension elements -->
 	<xsl:template name="extension">
