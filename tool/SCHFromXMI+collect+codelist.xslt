@@ -4,7 +4,7 @@
 	XSLT to collect scopes, patterns and schematrons written in UML Class constraints in an XMI file to create a SCH file
 	Modified to also include schematron rules for COLLECT and codelist checking
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 25 July 2018.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 5 July 2019.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -68,6 +68,12 @@
 				<xsl:with-param name="prefix" select="'collect'"/>
 				<xsl:with-param name="uri" select="'http://def.wmo.int/collect/2014'"/>
 			</xsl:call-template>
+			<!--
+			<xsl:call-template name="namespace">
+				<xsl:with-param name="prefix" select="'opm'"/>
+				<xsl:with-param name="uri" select="'http://def.wmo.int/opm/2013'"/>
+			</xsl:call-template>
+			-->
 			<xsl:call-template name="namespace">
 				<xsl:with-param name="prefix" select="'metce'"/>
 				<xsl:with-param name="uri" select="'http://def.wmo.int/metce/2013'"/>
@@ -100,7 +106,7 @@
 					</xsl:attribute>
 					<xsl:element name="sch:assert">
 						<xsl:attribute name="test">
-							<xsl:value-of select="'count(distinct-values(for $item in //collect:meteorologicalInformation/child::node() return(node-name($item))))eq 1'"/>
+							<xsl:value-of select="'count(distinct-values(for $item in //collect:meteorologicalInformation/child::* return(local-name($item))))eq 1'"/>
 						</xsl:attribute>
 						<xsl:copy-of select="'COLLECT.MB1: All meteorologicalInformation instances in MeteorologicalBulletin must be of the same type'"/>
 					</xsl:element>
