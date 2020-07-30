@@ -284,7 +284,8 @@
 					<xsl:value-of select="'http://www.aixm.aero/schema/5.1.1'"/>
 				</xsl:attribute>
 				<xsl:attribute name="schemaLocation">
-					<xsl:value-of select="'http://www.aixm.aero/schema/5.1.1_profiles/AIXM_WX/5.1.1b/AIXM_Features.xsd'"/>
+					<!-- <xsl:value-of select="'http://www.aixm.aero/schema/5.1.1_profiles/AIXM_WX/5.1.1b/AIXM_Features.xsd'"/> -->
+					<xsl:value-of select="'http://www.aixm.aero/schema/5.1.1/AIXM_Features.xsd'"/>
 				</xsl:attribute>
 				<xsl:apply-templates />
 			</xsl:element>

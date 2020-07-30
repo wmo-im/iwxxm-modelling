@@ -139,9 +139,8 @@
 	<!-- ISO 19108 -->
 
 	<!-- Replaced with an IWXXM-specific PropertyType in IWXXM 3 -->
-	<!--Class name="TM_Object" element="gml:AbstractTimeObject" type="gml:AbstractTimeObjectType" propertyType="#APT#"/-->
+	<!-- <Class name="TM_Object" element="gml:AbstractTimeObject" type="gml:AbstractTimeObjectType" propertyType="#APT#"/> -->
 	<Class name="TM_Object" element="gml:AbstractTimeObject" type="gml:AbstractTimeObjectType" propertyType="iwxxm:AbstractTimeObjectPropertyType"/>
-
 	<Class name="TM_Complex" element="gml:AbstractTimeComplex" type="gml:AbstractTimeComplexType" propertyType="#APT#"/>
 	<Class name="TM_GeometricPrimitive" element="gml:AbstractTimeGeometricPrimtive" type="gml:AbstractTimeGeometricPrimtiveType" propertyType="gml:TimeGeometricPrimtiveProertyType"/>
 	<Class name="TM_Instant" element="gml:TimeInstant" type="gml:TimeInstantType" propertyType="gml:TimeInstantPropertyType"/>
@@ -223,51 +222,80 @@
 	<Class name="RangeBounds" element="metce:RangeBounds" type="metce:RangeBoundsType" propertyType="metce:RangeBoundsPropertyType"/>
 	-->
 	<!-- ICAO IWXXM 3.0 -->
-	<Class name="AIRMETExpectedIntensityChange" type="iwxxm:AIRMETExpectedIntensityChangeType" propertyType="iwxxm:AIRMETExpectedIntensityChangeType"/>
-	<Class name="WeatherCausingVisibilityReduction" type="iwxxm:WeatherCausingVisibilityReductionType" propertyType="iwxxm:WeatherCausingVisibilityReductionType"/>
-	<Class name="AeronauticalAreaWeatherPhenomenon" type="iwxxm:AeronauticalAreaWeatherPhenomenonType" propertyType="iwxxm:AeronauticalAreaWeatherPhenomenonType"/>
-	<Class name="AIRMETEvolvingConditionCollection" type="iwxxm:AIRMETEvolvingConditionCollectionType" propertyType="iwxxm:AIRMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="AIRMETEvolvingCondition" type="iwxxm:AIRMETEvolvingConditionType" propertyType="iwxxm:AIRMETEvolvingConditionPropertyType"/>
-	<Class name="SIGMETEvolvingConditionCollection" type="iwxxm:SIGMETEvolvingConditionCollectionType" propertyType="iwxxm:SIGMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="SIGMETEvolvingCondition" type="iwxxm:SIGMETEvolvingConditionType" propertyType="iwxxm:SIGMETEvolvingConditionPropertyType"/>
-	<Class name="TropicalCycloneSIGMETEvolvingConditionCollection" type="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="TropicalCyclonePosition" type="iwxxm:TropicalCyclonePositionType" propertyType="iwxxm:TropicalCyclonePositionPropertyType"/>
-	<Class name="VolcanicAshSIGMETEvolvingConditionCollection" type="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="SIGMETPositionCollection" type="iwxxm:SIGMETPositionCollectionType" propertyType="iwxxm:SIGMETPositionCollectionPropertyType"/>
-	<Class name="SIGMETPosition" type="iwxxm:SIGMETPositionType" propertyType="iwxxm:SIGMETPositionPropertyType"/>
-	<Class name="TropicalCycloneSIGMETPositionCollection" type="iwxxm:TropicalCycloneSIGMETPositionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETPositionCollectionPropertyType"/>
-	<Class name="VolcanicAshSIGMETPositionCollection" type="iwxxm:VolcanicAshSIGMETPositionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETPositionCollectionPropertyType"/>
-	<Class name="MeteorologicalAerodromeObservation" type="iwxxm:MeteorologicalAerodromeObservationType" propertyType="iwxxm:MeteorologicalAerodromeObservationPropertyType"/>
+	<!-- METAR/SPECI -->
+	<!-- <Class name="MeteorologicalAerodromeObservationReport" type="iwxxm:MeteorologicalAerodromeObservationReportType" propertyType="iwxxm:MeteorologicalAerodromeObservationReportPropertyType"/> -->
 	<Class name="MeteorologicalAerodromeTrendForecast" type="iwxxm:MeteorologicalAerodromeTrendForecastType" propertyType="iwxxm:MeteorologicalAerodromeTrendForecastPropertyType"/>
-	<Class name="MeteorologicalAerodromeForecast" type="iwxxm:MeteorologicalAerodromeForecastType" propertyType="iwxxm:MeteorologicalAerodromeForecastPropertyType"/>
-	<Class name="TropicalCycloneObservedConditions" type="iwxxm:TropicalCycloneObservedConditionsType" propertyType="iwxxm:TropicalCycloneObservedConditionsPropertyType"/>
-	<Class name="TropicalCycloneForecastConditions" type="iwxxm:TropicalCycloneForecastConditionsType" propertyType="iwxxm:TropicalCycloneForecastConditionsPropertyType"/>
-	<Class name="VolcanicAshObservedOrEstimatedConditions" type="iwxxm:VolcanicAshObservedOrEstimatedConditionsType" propertyType="iwxxm:VolcanicAshObservedOrEstimatedConditionsPropertyType"/>
-	<Class name="VolcanicAshForecastConditions" type="iwxxm:VolcanicAshForecastConditionsType" propertyType="iwxxm:VolcanicAshForecastConditionsPropertyType"/>
-	<Class name="AviationColourCode" type="iwxxm:AviationColourCodeType" propertyType="iwxxm:AviationColourCodeType"/>
-
-	<Class name="SpaceWeatherAnalysis" type="iwxxm:SpaceWeatherAnalysisType" propertyType="iwxxm:SpaceWeatherAnalysisPropertyType"/>
-	<Class name="SpaceWeatherRegion" type="iwxxm:SpaceWeatherRegionType" propertyType="iwxxm:SpaceWeatherRegionPropertyType"/>
-	<Class name="SpaceWeatherPhenomena" type="iwxxm:SpaceWeatherPhenomenaType" propertyType="iwxxm:SpaceWeatherPhenomenaType"/>
-	<Class name="SpaceWeatherLocation" type="iwxxm:SpaceWeatherLocationType" propertyType="iwxxm:SpaceWeatherLocationType"/>
-
-	<Class name="Volcano" type="metce:VolcanoType" propertyType="metce:VolcanoPropertyType"/>
-	<Class name="EruptingVolcano" type="metce:EruptingVolcanoType" propertyType="metce:EruptingVolcanoPropertyType"/>
-	<Class name="TropicalCyclone" type="metce:TropicalCycloneType" propertyType="metce:TropicalCyclonePropertyType"/>
-	<Class name="AerodromeForecastWeather" type="iwxxm:AerodromeForecastWeatherType" propertyType="iwxxm:AerodromeForecastWeatherType"/>
-	<Class name="SigConvectiveCloudType" type="iwxxm:SigConvectiveCloudTypeType" propertyType="iwxxm:SigConvectiveCloudTypeType"/>
-	<Class name="CloudAmountReportedAtAerodrome" type="iwxxm:CloudAmountReportedAtAerodromeType" propertyType="iwxxm:CloudAmountReportedAtAerodromeType"/>
-	<Class name="AeronauticalSignificantWeatherPhenomenon" type="iwxxm:AeronauticalSignificantWeatherPhenomenonType" propertyType="iwxxm:AeronauticalSignificantWeatherPhenomenonType"/>
+	<Class name="MeteorologicalAerodromeObservation" type="iwxxm:MeteorologicalAerodromeObservationType" propertyType="iwxxm:MeteorologicalAerodromeObservationPropertyType"/>
 	<Class name="AerodromeRecentWeather" type="iwxxm:AerodromeRecentWeatherType" propertyType="iwxxm:AerodromeRecentWeatherType"/>
 	<Class name="SeaSurfaceState" type="iwxxm:SeaSurfaceStateType" propertyType="iwxxm:SeaSurfaceStateType"/>
 	<Class name="RunwayDeposits" type="iwxxm:RunwayDepositsType" propertyType="iwxxm:RunwayDepositsType"/>
 	<Class name="RunwayContamination" type="iwxxm:RunwayContaminationType" propertyType="iwxxm:RunwayContaminationType"/>
 	<Class name="RunwayFrictionCoefficient" type="iwxxm:RunwayFrictionCoefficientType" propertyType="iwxxm:RunwayFrictionCoefficientType"/>
 	<Class name="AerodromePresentWeather" type="iwxxm:AerodromePresentWeatherType" propertyType="iwxxm:AerodromePresentWeatherType"/>
+	<!-- TAF -->
+	<Class name="MeteorologicalAerodromeForecast" type="iwxxm:MeteorologicalAerodromeForecastType" propertyType="iwxxm:MeteorologicalAerodromeForecastPropertyType"/>
+        <!-- SIGMET -->
+	<Class name="TropicalCycloneSIGMETEvolvingConditionCollection" type="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionPropertyType"/>
+	<Class name="TropicalCycloneSIGMETPositionCollection" type="iwxxm:TropicalCycloneSIGMETPositionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETPositionCollectionPropertyType"/>
+	<Class name="VolcanicAshSIGMETEvolvingConditionCollection" type="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionPropertyType"/>
+	<Class name="VolcanicAshSIGMETPositionCollection" type="iwxxm:VolcanicAshSIGMETPositionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETPositionCollectionPropertyType"/>
+	<Class name="SIGMETEvolvingConditionCollection" type="iwxxm:SIGMETEvolvingConditionCollectionType" propertyType="iwxxm:SIGMETEvolvingConditionCollectionPropertyType"/>
+	<Class name="SIGMETPosition" type="iwxxm:SIGMETPositionType" propertyType="iwxxm:SIGMETPositionPropertyType"/>
+	<Class name="SIGMETEvolvingCondition" type="iwxxm:SIGMETEvolvingConditionType" propertyType="iwxxm:SIGMETEvolvingConditionPropertyType"/>
+	<Class name="SIGMETPositionCollection" type="iwxxm:SIGMETPositionCollectionType" propertyType="iwxxm:SIGMETPositionCollectionPropertyType"/>
+	<Class name="AeronauticalSignificantWeatherPhenomenon" type="iwxxm:AeronauticalSignificantWeatherPhenomenonType" propertyType="iwxxm:AeronauticalSignificantWeatherPhenomenonType"/>
+	<!-- AIRMET -->
+	<Class name="AIRMETEvolvingConditionCollection" type="iwxxm:AIRMETEvolvingConditionCollectionType" propertyType="iwxxm:AIRMETEvolvingConditionCollectionPropertyType"/>
+	<Class name="AIRMETEvolvingCondition" type="iwxxm:AIRMETEvolvingConditionType" propertyType="iwxxm:AIRMETEvolvingConditionPropertyType"/>
+	<Class name="AeronauticalAreaWeatherPhenomenon" type="iwxxm:AeronauticalAreaWeatherPhenomenonType" propertyType="iwxxm:AeronauticalAreaWeatherPhenomenonType"/>
+	<Class name="WeatherCausingVisibilityReduction" type="iwxxm:WeatherCausingVisibilityReductionType" propertyType="iwxxm:WeatherCausingVisibilityReductionType"/>
+        <!-- TCA -->
+	<Class name="TropicalCycloneObservedConditions" type="iwxxm:TropicalCycloneObservedConditionsType" propertyType="iwxxm:TropicalCycloneObservedConditionsPropertyType"/>
+	<Class name="TropicalCycloneForecastConditions" type="iwxxm:TropicalCycloneForecastConditionsType" propertyType="iwxxm:TropicalCycloneForecastConditionsPropertyType"/>
+	<!-- VAA -->
+	<Class name="VolcanicAshObservedOrEstimatedConditions" type="iwxxm:VolcanicAshObservedOrEstimatedConditionsType" propertyType="iwxxm:VolcanicAshObservedOrEstimatedConditionsPropertyType"/>
+	<Class name="VolcanicAshForecastConditions" type="iwxxm:VolcanicAshForecastConditionsType" propertyType="iwxxm:VolcanicAshForecastConditionsPropertyType"/>
+	<Class name="VolcanicAshCloudObservedOrEstimated" type="iwxxm:VolcanicAshCloudObservedOrEstimatedType" propertyType="iwxxm:VolcanicAshCloudObservedOrEstimatedPropertyType"/>
+	<Class name="WindObservedOrEstimated" type="iwxxm:WindObservedOrEstimatedType" propertyType="iwxxm:WindObservedOrEstimatedPropertyType"/>
+	<Class name="VolcanicAshCloudForecast" type="iwxxm:VolcanicAshCloudForecastType" propertyType="iwxxm:VolcanicAshCloudForecastPropertyType"/>
+	<Class name="AviationColourCode" type="iwxxm:AviationColourCodeType" propertyType="iwxxm:AviationColourCodeType"/>
+	<!-- SWA -->
+	<Class name="SpaceWeatherAnalysis" type="iwxxm:SpaceWeatherAnalysisType" propertyType="iwxxm:SpaceWeatherAnalysisPropertyType"/>
+	<Class name="SpaceWeatherRegion" type="iwxxm:SpaceWeatherRegionType" propertyType="iwxxm:SpaceWeatherRegionPropertyType"/>
+	<Class name="SpaceWeatherLocation" type="iwxxm:SpaceWeatherLocationType" propertyType="iwxxm:SpaceWeatherLocationType"/>
+	<Class name="SpaceWeatherPhenomena" type="iwxxm:SpaceWeatherPhenomenaType" propertyType="iwxxm:SpaceWeatherPhenomenaType"/>
+	<!-- WAFC SIGWX F/C -->
+	<Class name="WAFCJetStreamWindSymbol" type="iwxxm:WAFCJetStreamWindSymbolType" propertyType="iwxxm:WAFCJetStreamWindSymbolPropertyType"/>
+	<Class name="DegreeOfTurbulence" type="iwxxm:DegreeOfTurbulenceType" propertyType="iwxxm:DegreeOfTurbulenceType"/>
+	<Class name="CloudDistribution" type="iwxxm:CloudDistributionType" propertyType="iwxxm:CloudDistributionType"/>
+	<Class name="CloudType" type="iwxxm:CloudTypeType" propertyType="iwxxm:CloudTypeType"/>
+	<!-- MET Feature -->
+	<Class name="MeteorologicalFeature" type="iwxxm:MeteorologicalFeatureType" propertyType="iwxxm:MeteorologicalFeaturePropertyType"/>
+	<Class name="TimeInstantOrPeriod" type="iwxxm:TimeInstantOrPeriodType" propertyType="iwxxm:TimeInstantOrPeriodPropertyType"/>
+	<Class name="ElevatedEnvelope" type="iwxxm:ElevatedEnvelopeType" propertyType="iwxxm:ElevatedEnvelopePropertyType"/>
+	<Class name="ElevatedLevel" type="iwxxm:ElevatedLevelType" propertyType="iwxxm:ElevatedLevelPropertyType"/>
+	<Class name="ElevatedPoint" type="iwxxm:ElevatedPointType" propertyType="iwxxm:ElevatedPointPropertyType"/>
+	<Class name="ElevatedCurve" type="iwxxm:ElevatedCurveType" propertyType="iwxxm:ElevatedCurvePropertyType"/>
+	<Class name="ElevatedSurface" type="iwxxm:ElevatedSurfaceType" propertyType="iwxxm:ElevatedSurfacePropertyType"/>
+	<Class name="ElevatedVolume" type="iwxxm:ElevatedVolumeType" propertyType="iwxxm:ElevatedVolumePropertyType"/>
+	<Class name="ValDistanceVerticalType" type="iwxxm:ValDistanceVerticalType" propertyType="iwxxm:ValDistanceVerticalType"/>
+	<Class name="OriginatingOrGeneratingCentre" type="iwxxm:OriginatingOrGeneratingCentreType" propertyType="iwxxm:OriginatingOrGeneratingCentreType"/>
+	<Class name="MeteorologicalPhenomenon" type="iwxxm:MeteorologicalPhenomenonType" propertyType="iwxxm:MeteorologicalPhenomenonType"/>
+	<!-- Common -->
+	<Class name="AerodromeForecastWeather" type="iwxxm:AerodromeForecastWeatherType" propertyType="iwxxm:AerodromeForecastWeatherType"/>
+	<Class name="SigConvectiveCloudType" type="iwxxm:SigConvectiveCloudTypeType" propertyType="iwxxm:SigConvectiveCloudTypeType"/>
+	<Class name="CloudAmountReportedAtAerodrome" type="iwxxm:CloudAmountReportedAtAerodromeType" propertyType="iwxxm:CloudAmountReportedAtAerodromeType"/>
+	<Class name="StringWithNilReason" type="iwxxm:StringWithNilReasonType" propertyType="iwxxm:StringWithNilReasonType"/>
+	<!-- Measure -->
 	<Class name="AngleWithNilReason" type="iwxxm:AngleWithNilReasonType" propertyType="iwxxm:AngleWithNilReasonType"/>
 	<Class name="DistanceWithNilReason" type="iwxxm:DistanceWithNilReasonType" propertyType="iwxxm:DistanceWithNilReasonType"/>
 	<Class name="LengthWithNilReason" type="iwxxm:LengthWithNilReasonType" propertyType="iwxxm:LengthWithNilReasonType"/>
-        <Class name="StringWithNilReason" type="iwxxm:StringWithNilReasonType" propertyType="iwxxm:StringWithNilReasonType"/>
+	<Class name="MeasureWithNilReason" type="iwxxm:MeasureWithNilReasonType" propertyType="iwxxm:MeasureWithNilReasonType"/>
+	<Class name="VelocityWithNilReason" type="iwxxm:VelocityWithNilReasonType" propertyType="iwxxm:VelocityWithNilReasonType"/>
+	<!-- METCE -->
+	<Class name="Volcano" type="metce:VolcanoType" propertyType="metce:VolcanoPropertyType"/>
+	<Class name="EruptingVolcano" type="metce:EruptingVolcanoType" propertyType="metce:EruptingVolcanoPropertyType"/>
+	<Class name="TropicalCyclone" type="metce:TropicalCycloneType" propertyType="metce:TropicalCyclonePropertyType"/>
 	<!-- AIXM 5.1.1 -->
         <Class name="Unit" element="aixm:Unit" type="aixm:UnitType" propertyType="iwxxm:UnitPropertyType"/>
         <Class name="Airspace" element="aixm:Airspace" type="aixm:AirspaceType" propertyType="iwxxm:AirspacePropertyType"/>
@@ -276,6 +304,8 @@
         <Class name="AirportHeliport" element="aixm:AirportHeliport" type="aixm:AirportHeliportType" propertyType="iwxxm:AirportHeliportPropertyType"/>
         <Class name="Runway" element="aixm:Runway" type="aixm:RunwayType" propertyType="iwxxm:RunwayPropertyType"/>
         <Class name="RunwayDirection" element="aixm:RunwayDirection" type="aixm:RunwayDirectionType" propertyType="iwxxm:RunwayDirectionPropertyType"/>
-        <Class name="CodeVerticalReferenceType" type="aixm:CodeVerticalReferenceBaseType" propertyType="aixm:CodeVerticalReferenceBaseType"/>
+	<Class name="CodeVerticalReferenceBaseType" type="aixm:CodeVerticalReferenceBaseType" propertyType="aixm:CodeVerticalReferenceBaseType"/>
+	<Class name="CodeValueInterpretationBaseType" type="aixm:CodeValueInterpretationBaseType" propertyType="aixm:CodeValueInterpretationBaseType"/>
+	<Class name="UomDistanceVerticalType" type="aixm:UomDistanceVerticalType" propertyType="aixm:UomDistanceVerticalType"/>
 </ClassMapping>
 

@@ -7,8 +7,9 @@
 		(3) Remeove elements in XSD counterparts of UML classes of stereotype <<codeList>>
 		(4) Add extension elements to XSD counterparts of non-abstract UML classes
 		(5) Add serialization of tagged value on quantity assigned to a UML attribute to a UML class
+		(6) Correct incorrectly transformed stereotype <<union>>
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 9 July 2016.  Last updated on 22 Apr 2019.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 9 July 2016.  Last updated on 31 March 2020.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -30,10 +31,14 @@
 
 		<xsl:param name="typeName_xsl" select="./UML:ModelElement.taggedValue/UML:TaggedValue[@tag='type']/@value"/>
 	
-		<!-- Add "@nilReason" with manual exceptions to those (specially defined) classes and stereotypes which already have it through inheritation -->
-		<xsl:if test="not($typeName_xsl = 'AngleWithNilReason') and not($typeName_xsl = 'LengthWithNilReason') and not($typeName_xsl = 'DistanceWithNilReason') and not($typeName_xsl = 'MeasureWithNilReason') and not($typeName_xsl = 'VelocityWithNilReason') and not($typeName_xsl = 'StringWithNilReason') and not($typeName_xsl = 'AirspaceVolume') and not($typeName_xsl = 'TM_Instant') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and exists(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
+		<!-- Remove @type to prepare for the addition of "@nilReason" -->
+		<xsl:if test="./UML:ModelElement.taggedValue/UML:TaggedValue[@tag='nillable']/@value = 'true'">
 
-			<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:complexType[@name='{../../@name}Type']//xs:sequence/xs:element[@name='{@name}']/@type"/>
+			<xsl:if test="not($typeName_xsl = 'AngleWithNilReason') and not($typeName_xsl = 'LengthWithNilReason') and not($typeName_xsl = 'DistanceWithNilReason') and not($typeName_xsl = 'MeasureWithNilReason') and not($typeName_xsl = 'VelocityWithNilReason') and not($typeName_xsl = 'StringWithNilReason') and not($typeName_xsl = 'AirspaceVolume') and not($typeName_xsl = 'TM_Instant') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and exists(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
+
+				<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:complexType[@name='{../../@name}Type']//xs:sequence/xs:element[@name='{@name}']/@type"/>
+
+			</xsl:if>
 
 		</xsl:if>
 
@@ -82,7 +87,7 @@
 				<xsl:if test="./UML:ModelElement.taggedValue/UML:TaggedValue[@tag='nillable']/@value = 'true'">
 
 					<!-- Add "@nilReason" with manual exceptions to those (specially defined) classes and stereotypes which already have it through inheritation -->
-					<xsl:if test="not($typeName_xsl = 'AngleWithNilReason') and not($typeName_xsl = 'LengthWithNilReason') and not($typeName_xsl = 'DistanceWithNilReason') and not($typeName_xsl = 'MeasureWithNilReason') and not($typeName_xsl = 'VelocityWithNilReason') and not($typeName_xsl = 'StringWithNilReason') and not($typeName_xsl = 'AirspaceVolume') and not($typeName_xsl = 'TM_Instant') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and exists(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
+					<xsl:if test="not($typeName_xsl = 'AngleWithNilReason') and not($typeName_xsl = 'LengthWithNilReason') and not($typeName_xsl = 'DistanceWithNilReason') and not($typeName_xsl = 'MeasureWithNilReason') and not($typeName_xsl = 'VelocityWithNilReason') and not($typeName_xsl = 'StringWithNilReason') and not($typeName_xsl = 'AirspaceVolume') and not($typeName_xsl = 'TM_Instant') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and exists(//UML:Class[@name=$typeName_xsl]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
 
 						<lsx:element name="complexType">
 							<lsx:element name="complexContent">
@@ -146,8 +151,8 @@
 
 		<xsl:if test="./UML:AssociationEnd/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_end' and @value='target']/../UML:TaggedValue[@tag='nillable']/@value = 'true'">
 
-			<!-- Add "@nilReason" with manual exceptions to those types which do not have it already -->
-			<xsl:if test="not($targetClassName = 'AngleWithNilReason') and not($targetClassName = 'LengthWithNilReason') and not($targetClassName = 'DistanceWithNilReason') and not($targetClassName = 'MeasureWithNilReason') and not($targetClassName = 'VelocityWithNilReason') and not($targetClassName = 'StringWithNilReason') and not($targetClassName = 'AirspaceVolume') and not($targetClassName = 'TM_Instant') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and exists(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
+			<!-- Remove @type to prepare for the addition of "@nilReason" -->
+			<xsl:if test="not($targetClassName = 'AngleWithNilReason') and not($targetClassName = 'LengthWithNilReason') and not($targetClassName = 'DistanceWithNilReason') and not($targetClassName = 'MeasureWithNilReason') and not($targetClassName = 'VelocityWithNilReason') and not($targetClassName = 'StringWithNilReason') and not($targetClassName = 'AirspaceVolume') and not($targetClassName = 'TM_Instant') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and exists(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
 
 				<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:complexType[@name='{../../$sourceClassName}Type']//xs:sequence/xs:element[(@name='{$targetRoleName}' and '{$targetRoleName}' != '') or (@name='{$targetClassName}' and '{$targetClassName}' != '')]/@type"/>
 
@@ -165,7 +170,7 @@
 					<lsx:apply-templates select='@*|node()'/>
 
 					<!-- Add "@nilReason" with manual exceptions to those (specially defined) classes and stereotypes which already have it through inheritation -->
-					<xsl:if test="not($targetClassName = 'AngleWithNilReason') and not($targetClassName = 'LengthWithNilReason') and not($targetClassName = 'DistanceWithNilReason') and not($targetClassName = 'MeasureWithNilReason') and not($targetClassName = 'VelocityWithNilReason') and not($targetClassName = 'StringWithNilReason') and not($targetClassName = 'AirspaceVolume') and not($targetClassName = 'TM_Instant') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and exists(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
+					<xsl:if test="not($targetClassName = 'AngleWithNilReason') and not($targetClassName = 'LengthWithNilReason') and not($targetClassName = 'DistanceWithNilReason') and not($targetClassName = 'MeasureWithNilReason') and not($targetClassName = 'VelocityWithNilReason') and not($targetClassName = 'StringWithNilReason') and not($targetClassName = 'AirspaceVolume') and not($targetClassName = 'TM_Instant') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'featureType') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and exists(//UML:Class[@xmi.id=$targetClassId]/UML:ModelElement.stereotype/UML:Stereotype/@name)">
 
 						<lsx:element name="complexType">
 							<lsx:element name="complexContent">
@@ -198,10 +203,27 @@
 
 		<xsl:param name="className" select="../@name"/>
 
-		<xsl:if test="./UML:Stereotype/@name = 'codeList'">
+		<!-- Disabled to allow codeLists to be included in phynomenonProperty of MeteorologicalFeature -->
+		<!-- <xsl:if test="./UML:Stereotype/@name = 'codeList'"> -->
 
 			<!-- For UML classes of stereotype <<codeList>>, as their XSD counterparts are solely for inclusion as XSD attributes, only the types defined are required but not the element -->
-			<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:element[@name='{$className}']"/>
+			<!-- <lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:element[@name='{$className}']"/> -->
+
+		<!-- </xsl:if> -->
+
+		<xsl:if test="./UML:Stereotype/@name = 'union'">
+
+			<!-- For UML classes of stereotype <<union>>, EA12 incorrectly transform it as it is a <<featureType>> introducing <extension base="gml:AbstractObjectType"> in which the GML type is non-existing -->
+			<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:complexType[@name='{$className}Type']">
+
+				<lsx:element name="complexType">
+					<lsx:attribute name="name">
+						<lsx:value-of select="'{$className}Type'"/>
+					</lsx:attribute>
+					<lsx:apply-templates select='//xs:choice'/>
+				</lsx:element>
+
+			</lsx:template>
 
 		</xsl:if>
 
@@ -213,11 +235,11 @@
 		<xsl:param name="classID" select="../@xmi.id"/>
 		<xsl:param name="superClassID" select="//UML:Generalization[@subtype=$classID]/@supertype"/>
 
-		<!-- Don't add extension elements to Abstract Classes, Classes with stereotype <<codeList>> and <<enumeration>> and Classes with tagged value noIWXXMExtension="true" -->
-		<xsl:if test="not(../@isAbstract = 'true') and not(../UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(../UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:TaggedValue[@modelElement=$classID and @tag='noIWXXMExtension']/@value = 'true')">
+		<!-- Don't add extension elements to Abstract Classes, Classes with stereotype <<codeList>>, <<enumeration>> and <<union>> and Classes with tagged value noIWXXMExtension="true" -->
+		<xsl:if test="not(../@isAbstract = 'true') and not(../UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(../UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(../UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and not(//UML:TaggedValue[@modelElement=$classID and @tag='noIWXXMExtension']/@value = 'true')">
 
 			<!-- To prevent "Unique Particle Attribution" error when a super Class meeting the above criteria is present, the current Class should have at least one non-optional (1) UML attribute without xsdAsAttribute='true' or (2) UML association -->
-			<xsl:if test="(count(../UML:Classifier.feature/UML:Attribute/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='lowerBound' and @value!='0']) != count(../UML:Classifier.feature/UML:Attribute/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='lowerBound' and @value!='0']/../UML:TaggedValue[@tag='xsdAsAttribute' and @value='true'])) or exists(//UML:Association/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_sourceName' and @value=$className]/../UML:TaggedValue[@tag='ea_targetName']) or not(exists($superClassID) and not(//UML:Class[@xmi.id=$superClassID]/@isAbstract = 'true') and not(//UML:Class[@xmi.id=$superClassID]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$superClassID]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:TaggedValue[@modelElement=$superClassID and @tag='noIWXXMExtension']/@value = 'true'))">
+			<xsl:if test="(count(../UML:Classifier.feature/UML:Attribute/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='lowerBound' and @value!='0']) != count(../UML:Classifier.feature/UML:Attribute/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='lowerBound' and @value!='0']/../UML:TaggedValue[@tag='xsdAsAttribute' and @value='true'])) or exists(//UML:Association/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_sourceName' and @value=$className]/../UML:TaggedValue[@tag='ea_targetName']) or not(exists($superClassID) and not(//UML:Class[@xmi.id=$superClassID]/@isAbstract = 'true') and not(//UML:Class[@xmi.id=$superClassID]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList') and not(//UML:Class[@xmi.id=$superClassID]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration') and not(//UML:Class[@xmi.id=$superClassID]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'union') and not(//UML:TaggedValue[@modelElement=$superClassID and @tag='noIWXXMExtension']/@value = 'true'))">
 
 				<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:complexType[@name='{../@name}Type']//xs:sequence">
 					<lsx:element name='{{local-name()}}'>

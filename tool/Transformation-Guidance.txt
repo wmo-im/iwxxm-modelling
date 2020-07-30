@@ -29,5 +29,5 @@ To collect schematron fragments from IWXXM model and create a SCH file
 
 2. Use SCHFromXMI.xslt and saxon HE to generate the SCH file from
 icao-iwxxm.xml
-c:>transform -s:icao-iwxxm.xml -o:iwxxm.sch -xsl:SCHFromXMI+collect+codelist.xslt
+c:>transform -s:icao-iwxxm.xml -o:iwxxm.sch -xsl:SCHFromXMI.xslt
 
