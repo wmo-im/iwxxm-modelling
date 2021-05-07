@@ -203,7 +203,7 @@
 
 		<xsl:param name="className" select="../@name"/>
 
-		<!-- Disabled to allow codeLists to be included in phynomenonProperty of MeteorologicalFeature -->
+		<!-- Disabled to allow codeLists to be included in phenomenonProperty of MeteorologicalFeature -->
 		<!-- <xsl:if test="./UML:Stereotype/@name = 'codeList'"> -->
 
 			<!-- For UML classes of stereotype <<codeList>>, as their XSD counterparts are solely for inclusion as XSD attributes, only the types defined are required but not the element -->

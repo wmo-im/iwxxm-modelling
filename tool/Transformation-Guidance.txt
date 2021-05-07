@@ -31,3 +31,13 @@ To collect schematron fragments from IWXXM model and create a SCH file
 icao-iwxxm.xml
 c:>transform -s:icao-iwxxm.xml -o:iwxxm.sch -xsl:SCHFromXMI.xslt
 
+
+To collect schematron fragments from multiple IWXXM model and create a SCH file
+==============================================+++++++++========================
+
+1. Edit SCHFromXMI-MultiVersion.xslt to indicate the location of XMI files of
+different versions of IWXXM
+
+2. Use SCHFromXMI-MultiVersion.xslt and saxon HE to generate the SCH file
+c:>transform -o:iwxxm-multiversion.sch -xsl:SCHFromXMI-MultiVersion.xslt
+

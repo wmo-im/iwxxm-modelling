@@ -4,7 +4,7 @@
 	XSLT to collect scopes, patterns and schematrons written in UML Class constraints in an XMI file to create a SCH file
 	Modified to also include schematron rules for codelist checking
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 12 April 2020.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 25 April 2021.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -188,6 +188,7 @@
 					</xsl:attribute>
 					<xsl:element name='sch:rule'>
 						<xsl:attribute name="context">
+							<!-- Context will cover a class' ownself and its extensions having a generalization relationship -->
 							<xsl:if test="not(//UML:Class[@name=$className]/@isAbstract = 'true' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')">
 								<xsl:value-of select="concat('//',$prefix,':',$className)"/>
 							</xsl:if>
@@ -232,6 +233,23 @@
 		<xsl:param name="inputString" select="//UML:TaggedValue[@tag='vocabulary' and @modelElement=$xmi.id]/@value"/>
 		<xsl:param name="tokenString" select="tokenize($inputString,'#')"/>
 		<xsl:param name="codeList" select="normalize-space($tokenString[1])"/>
+		<!-- Code list as itself -->
+		<xsl:element name='sch:pattern'>
+			<xsl:attribute name="id">
+				<xsl:value-of select="concat(replace(replace(../../UML:ModelElement.taggedValue/UML:TaggedValue[@tag='package_name']/@value,'/','_'),' ',''),'.',$className)"/>
+			</xsl:attribute>
+			<xsl:element name='sch:rule'>
+				<xsl:attribute name="context">
+					<xsl:value-of select="concat('//',$prefix,':',$className)"/>
+				</xsl:attribute>
+				<xsl:element name='sch:assert'>
+					<xsl:attribute name="test">
+						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@*[local-name()=''about''] or @nilReason')"/>
+					</xsl:attribute>
+					<xsl:value-of select="concat('Element in ',$prefix,':',$className,' should be a member of code list ',$codeList)"/>
+				</xsl:element>
+			</xsl:element>
+		</xsl:element>
 		<!-- Code list as target of an association -->
 		<xsl:for-each select="//UML:Association/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$className]">
 			<xsl:call-template name="pattern-codeList">
@@ -266,16 +284,62 @@
 			</xsl:attribute>
 			<xsl:element name='sch:rule'>
 				<xsl:attribute name="context">
+					<!-- Context will cover a code list's attribute name in a class or target role name in an association -->
+					<!-- with the source classes or their extensions as prefixes -->
 					<xsl:value-of select="concat('//',$prefix,':',$parentName,'/',$prefix,':',$selfName)"/>
+					<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$parentName]" mode="findSrcName_codelist">
+						<xsl:with-param name="verbose" select="'false'"/>
+						<xsl:with-param name="prefix" select="$prefix"/>
+						<xsl:with-param name="parentIsAbstract" select="not(//UML:Class[@name=$parentName]/@isAbstract = 'true' or //UML:Class[@name=$parentName]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$parentName]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')"/>
+						<xsl:with-param name="selfName" select="$selfName"/>
+					</xsl:apply-templates>
 				</xsl:attribute>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF/*/skos:member/*/@*[local-name()=''about''] or @nilReason')"/>
+						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@*[local-name()=''about''] or @nilReason')"/>
 					</xsl:attribute>
-					<xsl:value-of select="concat($parentName,'/',$prefix,':',$selfName,' elements should be a member of ',$codeList)"/>
+					<xsl:value-of select="concat('Element in ',$prefix,':',$parentName,'/',$prefix,':',$selfName)"/>
+					<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$parentName]" mode="findSrcName_codelist">
+						<xsl:with-param name="verbose" select="'true'"/>
+						<xsl:with-param name="prefix" select="$prefix"/>
+						<xsl:with-param name="parentIsAbstract" select="not(//UML:Class[@name=$parentName]/@isAbstract = 'true' or //UML:Class[@name=$parentName]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$parentName]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')"/>
+						<xsl:with-param name="selfName" select="$selfName"/>
+					</xsl:apply-templates>
+					<xsl:value-of select="concat(' should be a member of code list ',$codeList)"/>
 				</xsl:element>
 			</xsl:element>
 		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="@*|node()" mode="findSrcName_codelist">
+		<xsl:param name="verbose"/>
+		<xsl:param name="prefix"/>
+		<xsl:param name="parentIsAbstract"/>
+		<xsl:param name="selfName"/>
+		<xsl:variable name="sourceClassName" select="../UML:TaggedValue[@tag='ea_sourceName']/@value"/>
+		<xsl:choose>
+			<xsl:when test="$verbose = 'true'">
+				<xsl:if test="$parentIsAbstract or number(position()) &gt; 1">
+					<xsl:value-of select="', '"/>
+				</xsl:if>
+				<xsl:if test="//UML:Class[@name=$sourceClassName]/@isAbstract = 'false'">
+					<xsl:value-of select="concat($prefix,':',$sourceClassName,'/',$prefix,':',$selfName)"/>
+				</xsl:if>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="$parentIsAbstract or number(position()) &gt; 1">
+					<xsl:value-of select="'|'"/>
+				</xsl:if>
+				<xsl:if test="//UML:Class[@name=$sourceClassName]/@isAbstract = 'false'">
+					<xsl:value-of select="concat('//',$prefix,':',$sourceClassName,'/',$prefix,':',$selfName)"/>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$sourceClassName]" mode="findSrcName_codelist">
+			<xsl:with-param name="prefix" select="$prefix"/>
+			<xsl:with-param name="parentIsAbstract" select="//UML:Class[@name=$sourceClassName]/@isAbstract = 'false'"/>
+			<xsl:with-param name="selfName" select="$selfName"/>
+		</xsl:apply-templates>
 	</xsl:template>
 
 	<!-- Add a schematron rule to check the nilReason attributes -->
