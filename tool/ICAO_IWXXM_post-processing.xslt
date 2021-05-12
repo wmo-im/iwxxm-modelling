@@ -5794,6 +5794,20 @@ When no subsequent advisory is expected to be issued it should be indicated by a
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:simpleType[@name='WorldAreaForecastCentreType']">
+      <xsl:element name="element">
+         <xsl:attribute name="name">
+            <xsl:value-of select="'WorldAreaForecastCentre'"/>
+         </xsl:attribute>
+         <xsl:attribute name="type">
+            <xsl:value-of select="'iwxxm:WorldAreaForecastCentreType'"/>
+         </xsl:attribute>
+      </xsl:element>
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
                  match="xs:complexType[@name='WorldAreaForecastCentreType']//xs:sequence/xs:element[@name='London']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
