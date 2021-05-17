@@ -4,12 +4,13 @@
 	XSLT to output an XSLT fragment for inclusion in a GML post-processing script:
 		(1) Copy notes from and reflect use="required" and nillable="true" in UML class attributes to/in their XSD counterparts
 		(2) Reflect nillable="true" in UML association targets in their XSD counterparts
-		(3) Remeove elements in XSD counterparts of UML classes of stereotype <<codeList>>
+		(3) Remeove elements in XSD counterparts of UML classes of stereotype <<codeList>> - Disabled
 		(4) Add extension elements to XSD counterparts of non-abstract UML classes
 		(5) Add serialization of tagged value on quantity assigned to a UML attribute to a UML class
 		(6) Correct incorrectly transformed stereotype <<union>>
+                (7) Add elements in XSD counterparts of UML classes of stereotype <<enumeration>> to allow it to be used globally
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 9 July 2016.  Last updated on 31 March 2020.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 9 July 2016.  Last updated on 12 May 2021.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -202,8 +203,9 @@
 	<xsl:template match="//UML:Class/UML:ModelElement.stereotype">
 
 		<xsl:param name="className" select="../@name"/>
+		<xsl:param name="classID" select="../@xmi.id"/>
 
-		<!-- Disabled to allow codeLists to be included in phynomenonProperty of MeteorologicalFeature -->
+		<!-- Disabled to allow codeLists to be included in phenomenonProperty of MeteorologicalFeature -->
 		<!-- <xsl:if test="./UML:Stereotype/@name = 'codeList'"> -->
 
 			<!-- For UML classes of stereotype <<codeList>>, as their XSD counterparts are solely for inclusion as XSD attributes, only the types defined are required but not the element -->
@@ -221,6 +223,27 @@
 						<lsx:value-of select="'{$className}Type'"/>
 					</lsx:attribute>
 					<lsx:apply-templates select='//xs:choice'/>
+				</lsx:element>
+
+			</lsx:template>
+
+		</xsl:if>
+
+		<xsl:if test="(./UML:Stereotype/@name = 'enumeration') and (//UML:TaggedValue[@modelElement=$classID and @tag='asElement']/@value = 'true')">
+			
+			<!-- For UML classes of stereotype <<enumeration>>, re-introduce elements back to its XSD counterparts if tagged value asElement = 'true' -->
+			<lsx:template xmlns:xs="http://www.w3.org/2001/XMLSchema" match="xs:simpleType[@name='{$className}Type']">
+
+				<lsx:element name="element">
+					<lsx:attribute name="name">
+						<lsx:value-of select="'{$className}'"/>
+					</lsx:attribute>
+					<lsx:attribute name="type">
+						<lsx:value-of select="'iwxxm:{$className}Type'"/>
+					</lsx:attribute>
+				</lsx:element>
+				<lsx:element name='{{local-name()}}'>
+					<lsx:apply-templates select='@*|node()'/>
 				</lsx:element>
 
 			</lsx:template>

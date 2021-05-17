@@ -265,6 +265,7 @@
 	<Class name="SpaceWeatherLocation" type="iwxxm:SpaceWeatherLocationType" propertyType="iwxxm:SpaceWeatherLocationType"/>
 	<Class name="SpaceWeatherPhenomena" type="iwxxm:SpaceWeatherPhenomenaType" propertyType="iwxxm:SpaceWeatherPhenomenaType"/>
 	<!-- WAFC SIGWX F/C -->
+	<Class name="WorldAreaForecastCentre" type="iwxxm:WorldAreaForecastCentreType" propertyType="iwxxm:WorldAreaForecastCentreType"/>
 	<Class name="WAFCJetStreamWindSymbol" type="iwxxm:WAFCJetStreamWindSymbolType" propertyType="iwxxm:WAFCJetStreamWindSymbolPropertyType"/>
 	<Class name="DegreeOfTurbulence" type="iwxxm:DegreeOfTurbulenceType" propertyType="iwxxm:DegreeOfTurbulenceType"/>
 	<Class name="CloudDistribution" type="iwxxm:CloudDistributionType" propertyType="iwxxm:CloudDistributionType"/>
@@ -279,7 +280,6 @@
 	<Class name="ElevatedSurface" type="iwxxm:ElevatedSurfaceType" propertyType="iwxxm:ElevatedSurfacePropertyType"/>
 	<Class name="ElevatedVolume" type="iwxxm:ElevatedVolumeType" propertyType="iwxxm:ElevatedVolumePropertyType"/>
 	<Class name="ValDistanceVerticalType" type="iwxxm:ValDistanceVerticalType" propertyType="iwxxm:ValDistanceVerticalType"/>
-	<Class name="OriginatingOrGeneratingCentre" type="iwxxm:OriginatingOrGeneratingCentreType" propertyType="iwxxm:OriginatingOrGeneratingCentreType"/>
 	<Class name="MeteorologicalPhenomenon" type="iwxxm:MeteorologicalPhenomenonType" propertyType="iwxxm:MeteorologicalPhenomenonType"/>
 	<!-- Common -->
 	<Class name="AerodromeForecastWeather" type="iwxxm:AerodromeForecastWeatherType" propertyType="iwxxm:AerodromeForecastWeatherType"/>

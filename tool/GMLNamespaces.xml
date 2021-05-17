@@ -26,9 +26,9 @@
 		<Namespace xmlns="metce" targetNamespace="http://def.wmo.int/metce/2013" xsdDocument="http://schemas.wmo.int/metce/1.2/metce.xsd"/>
 		<!-- ICAO AIXM 5.1.1 -->
 		<Namespace xmlns="aixm" targetNamespace="http://www.aixm.aero/schema/5.1.1" xsdDocument="http://www.aixm.aero/schema/5.1.1/AIXM_Features.xsd"/>
-		<!-- ICAO IWXXM 3.0 -->
-		<!-- <Namespace xmlns="iwxxm" targetNamespace="http://icao.int/iwxxm/3.0" xsdDocument="http://schemas.wmo.int/iwxxm/3.0/iwxxm.xsd"/> -->
-		<!-- <Namespace xmlns="iwxxm" targetNamespace="http://icao.int/iwxxm/3.0" xsdDocument="iwxxm.xsd"/> -->
+		<!-- ICAO IWXXM 2021-2 -->
+		<!-- <Namespace xmlns="iwxxm" targetNamespace="http://icao.int/iwxxm/2021-2" xsdDocument="http://schemas.wmo.int/iwxxm/2021-2/iwxxm.xsd"/> -->
+		<!-- <Namespace xmlns="iwxxm" targetNamespace="http://icao.int/iwxxm/2021-2" xsdDocument="iwxxm.xsd"/> -->
 	</GMLNS>
 	<GMLNS version="3.3">
 		<Namespace xmlns="gmlxbt" targetNamespace="http://www.opengis.net/gml/3.3/xbt" xsdDocument="http://schemas.opengis.net/gml/3.3/extdBaseTypes.xsd"/>
