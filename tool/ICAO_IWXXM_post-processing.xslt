@@ -2773,6 +2773,22 @@ ICAO Annex 3 / WMO No. 49-2:
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SIGMETPositionType']//xs:sequence/xs:element[@name='tropicalCyclonePosition']">
+      <xsl:param name="typeName" select="@type"/>
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SIGMETPositionType']//xs:attribute[@name='tropicalCyclonePosition']">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="annotation">
+            <xsl:element name="documentation">The position of a tropical cyclone.  Only be used in a TropicalCycloneSIGMET.</xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
                  match="xs:complexType[@name='SIGMETPositionType']//xs:sequence/xs:element[@name='geometry']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
@@ -3067,6 +3083,22 @@ The expected end of occurrence of volcanic ash ("NO VA EXP") is indicated with a
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SIGMETEvolvingConditionType']//xs:sequence/xs:element[@name='tropicalCyclonePosition']">
+      <xsl:param name="typeName" select="@type"/>
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SIGMETEvolvingConditionType']//xs:attribute[@name='tropicalCyclonePosition']">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="annotation">
+            <xsl:element name="documentation">The position of a tropical cyclone.  Only be used in a TropicalCycloneSIGMET.</xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
                  match="xs:complexType[@name='SIGMETEvolvingConditionType']//xs:sequence/xs:element[@name='geometry']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
@@ -3198,22 +3230,6 @@ speedOfMotion can be provided in either two units of measures: "km/h" or "[kn_i]
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The time at which meteorological phenomena occur</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='SIGMETEvolvingConditionCollectionType']//xs:sequence/xs:element[@name='tropicalCyclonePosition']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='SIGMETEvolvingConditionCollectionType']//xs:attribute[@name='tropicalCyclonePosition']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">The position of a tropical cyclone.  Only be used in a TropicalCycloneSIGMET.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3400,22 +3416,6 @@ Each analysis has a single SIGMETEvolvingConditionCollection as its result.  </x
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The time at which meteorological phenomena occur</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='SIGMETPositionCollectionType']//xs:sequence/xs:element[@name='tropicalCyclonePosition']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='SIGMETPositionCollectionType']//xs:attribute[@name='tropicalCyclonePosition']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">The position of a tropical cyclone.  Only be used in a TropicalCycloneSIGMET.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -4415,6 +4415,9 @@ When no subsequent advisory is expected to be issued it should be indicated by a
                  match="xs:complexType[@name='TropicalCycloneObservedConditionsType']//xs:sequence/xs:element[@name='cumulonimbusCloudLocation']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
+         <xsl:attribute name="nillable">
+            <xsl:value-of select="'true'"/>
+         </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
       </xsl:element>
    </xsl:template>
