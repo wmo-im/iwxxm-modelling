@@ -3132,7 +3132,7 @@ The expected end of occurrence of volcanic ash ("NO VA EXP") is indicated with a
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">This element refers to the expected direction of movement which the phenomenon is moving towards, .e.g, "moving east". When no movement is expected, this is a http://codes.wmo.int/common/nil/inapplicable nilReason and the speedOfMotion will be 0.
+            <xsl:element name="documentation">This element refers to the expected direction of movement which the phenomenon is moving towards, .e.g, "moving east". Stationary phenomenon shall be denoted with both iwxxm:directionOfMotion and iwxxm:speedOfMotion absent.
 
 This element value is given in degrees from true North. Plane angle unit of measure (uom) is "deg". </xsl:element>
          </xsl:element>
@@ -3150,7 +3150,7 @@ This element value is given in degrees from true North. Plane angle unit of meas
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected speed of movement of a meteorological condition. When no movement is expected, this will have a value of 0 and directionOfMotion will have a http://codes.wmo.int/common/nil/inapplicable nilReason.
+            <xsl:element name="documentation">The expected speed of movement of a meteorological condition. Stationary phenomenon shall be denoted with both iwxxm:directionOfMotion and iwxxm:speedOfMotion absent.
 
 speedOfMotion can be provided in either two units of measures: "km/h" or "[kn_i]" (knots).
 </xsl:element>
@@ -3589,7 +3589,7 @@ Each analysis has a single SIGMETEvolvingConditionCollection as its result.  </x
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected direction of movement of a meteorological condition. When no movement is expected, this is a http://codes.wmo.int/common/nil/inapplicable nilReason and the speedOfMotion will be 0.  Direction of motion to shall be given in degrees from true North. Plane angle unit of measure (uom) is "deg".</xsl:element>
+            <xsl:element name="documentation">The expected direction of movement of a meteorological condition. Stationary phenomenon shall be denoted with both iwxxm:directionOfMotion and iwxxm:speedOfMotion absent.  Direction of motion to shall be given in degrees from true North. Plane angle unit of measure (uom) is "deg".</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3605,7 +3605,7 @@ Each analysis has a single SIGMETEvolvingConditionCollection as its result.  </x
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected speed of movement of a meteorological condition. When no movement is expected, this will have a value of 0 and directionOfMotion will have a http://codes.wmo.int/common/nil/inapplicable nilReason. Speed of movement shall be given in either "km/h" or "[kn_i]" (knot).</xsl:element>
+            <xsl:element name="documentation">The expected speed of movement of a meteorological condition. Stationary phenomenon shall be denoted with both iwxxm:directionOfMotion and iwxxm:speedOfMotion absent. Speed of movement shall be given in either "km/h" or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
