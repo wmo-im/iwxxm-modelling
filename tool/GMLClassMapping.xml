@@ -235,13 +235,9 @@
 	<!-- TAF -->
 	<Class name="MeteorologicalAerodromeForecast" type="iwxxm:MeteorologicalAerodromeForecastType" propertyType="iwxxm:MeteorologicalAerodromeForecastPropertyType"/>
         <!-- SIGMET -->
-	<Class name="TropicalCycloneSIGMETEvolvingConditionCollection" type="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="TropicalCycloneSIGMETPositionCollection" type="iwxxm:TropicalCycloneSIGMETPositionCollectionType" propertyType="iwxxm:TropicalCycloneSIGMETPositionCollectionPropertyType"/>
-	<Class name="VolcanicAshSIGMETEvolvingConditionCollection" type="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETEvolvingConditionCollectionPropertyType"/>
-	<Class name="VolcanicAshSIGMETPositionCollection" type="iwxxm:VolcanicAshSIGMETPositionCollectionType" propertyType="iwxxm:VolcanicAshSIGMETPositionCollectionPropertyType"/>
+	<Class name="SIGMETEvolvingCondition" type="iwxxm:SIGMETEvolvingConditionType" propertyType="iwxxm:SIGMETEvolvingConditionPropertyType"/>
 	<Class name="SIGMETEvolvingConditionCollection" type="iwxxm:SIGMETEvolvingConditionCollectionType" propertyType="iwxxm:SIGMETEvolvingConditionCollectionPropertyType"/>
 	<Class name="SIGMETPosition" type="iwxxm:SIGMETPositionType" propertyType="iwxxm:SIGMETPositionPropertyType"/>
-	<Class name="SIGMETEvolvingCondition" type="iwxxm:SIGMETEvolvingConditionType" propertyType="iwxxm:SIGMETEvolvingConditionPropertyType"/>
 	<Class name="SIGMETPositionCollection" type="iwxxm:SIGMETPositionCollectionType" propertyType="iwxxm:SIGMETPositionCollectionPropertyType"/>
 	<Class name="AeronauticalSignificantWeatherPhenomenon" type="iwxxm:AeronauticalSignificantWeatherPhenomenonType" propertyType="iwxxm:AeronauticalSignificantWeatherPhenomenonType"/>
 	<!-- AIRMET -->
