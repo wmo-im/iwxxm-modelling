@@ -264,6 +264,7 @@
 	<Class name="WorldAreaForecastCentre" type="iwxxm:WorldAreaForecastCentreType" propertyType="iwxxm:WorldAreaForecastCentreType"/>
 	<Class name="WAFCJetStreamWindSymbol" type="iwxxm:WAFCJetStreamWindSymbolType" propertyType="iwxxm:WAFCJetStreamWindSymbolPropertyType"/>
 	<Class name="DegreeOfTurbulence" type="iwxxm:DegreeOfTurbulenceType" propertyType="iwxxm:DegreeOfTurbulenceType"/>
+	<Class name="DegreeOfIcing" type="iwxxm:DegreeOfIcingType" propertyType="iwxxm:DegreeOfIcingType"/>
 	<Class name="CloudDistribution" type="iwxxm:CloudDistributionType" propertyType="iwxxm:CloudDistributionType"/>
 	<Class name="CloudType" type="iwxxm:CloudTypeType" propertyType="iwxxm:CloudTypeType"/>
 	<!-- MET Feature -->
