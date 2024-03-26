@@ -221,16 +221,13 @@
 	<Class name="ObservableProperty" element="opm:ObservableProperty" type="opm:ObservablePropertyType" propertyType="opm:ObservablePropertyType"/>
 	<Class name="RangeBounds" element="metce:RangeBounds" type="metce:RangeBoundsType" propertyType="metce:RangeBoundsPropertyType"/>
 	-->
-	<!-- ICAO IWXXM 3.0 -->
+	<!-- ICAO IWXXM 2024-x -->
 	<!-- METAR/SPECI -->
 	<!-- <Class name="MeteorologicalAerodromeObservationReport" type="iwxxm:MeteorologicalAerodromeObservationReportType" propertyType="iwxxm:MeteorologicalAerodromeObservationReportPropertyType"/> -->
 	<Class name="MeteorologicalAerodromeTrendForecast" type="iwxxm:MeteorologicalAerodromeTrendForecastType" propertyType="iwxxm:MeteorologicalAerodromeTrendForecastPropertyType"/>
 	<Class name="MeteorologicalAerodromeObservation" type="iwxxm:MeteorologicalAerodromeObservationType" propertyType="iwxxm:MeteorologicalAerodromeObservationPropertyType"/>
 	<Class name="AerodromeRecentWeather" type="iwxxm:AerodromeRecentWeatherType" propertyType="iwxxm:AerodromeRecentWeatherType"/>
 	<Class name="SeaSurfaceState" type="iwxxm:SeaSurfaceStateType" propertyType="iwxxm:SeaSurfaceStateType"/>
-	<Class name="RunwayDeposits" type="iwxxm:RunwayDepositsType" propertyType="iwxxm:RunwayDepositsType"/>
-	<Class name="RunwayContamination" type="iwxxm:RunwayContaminationType" propertyType="iwxxm:RunwayContaminationType"/>
-	<Class name="RunwayFrictionCoefficient" type="iwxxm:RunwayFrictionCoefficientType" propertyType="iwxxm:RunwayFrictionCoefficientType"/>
 	<Class name="AerodromePresentWeather" type="iwxxm:AerodromePresentWeatherType" propertyType="iwxxm:AerodromePresentWeatherType"/>
 	<!-- TAF -->
 	<Class name="MeteorologicalAerodromeForecast" type="iwxxm:MeteorologicalAerodromeForecastType" propertyType="iwxxm:MeteorologicalAerodromeForecastPropertyType"/>
@@ -254,30 +251,49 @@
 	<Class name="VolcanicAshCloudObservedOrEstimated" type="iwxxm:VolcanicAshCloudObservedOrEstimatedType" propertyType="iwxxm:VolcanicAshCloudObservedOrEstimatedPropertyType"/>
 	<Class name="WindObservedOrEstimated" type="iwxxm:WindObservedOrEstimatedType" propertyType="iwxxm:WindObservedOrEstimatedPropertyType"/>
 	<Class name="VolcanicAshCloudForecast" type="iwxxm:VolcanicAshCloudForecastType" propertyType="iwxxm:VolcanicAshCloudForecastPropertyType"/>
-	<Class name="AviationColourCode" type="iwxxm:AviationColourCodeType" propertyType="iwxxm:AviationColourCodeType"/>
 	<!-- SWA -->
 	<Class name="SpaceWeatherAnalysis" type="iwxxm:SpaceWeatherAnalysisType" propertyType="iwxxm:SpaceWeatherAnalysisPropertyType"/>
+	<Class name="SpaceWeatherIntensityAndRegion" type="iwxxm:SpaceWeatherIntensityAndRegionType" propertyType="iwxxm:SpaceWeatherIntensityAndRegionPropertyType"/>
 	<Class name="SpaceWeatherRegion" type="iwxxm:SpaceWeatherRegionType" propertyType="iwxxm:SpaceWeatherRegionPropertyType"/>
 	<Class name="SpaceWeatherLocation" type="iwxxm:SpaceWeatherLocationType" propertyType="iwxxm:SpaceWeatherLocationType"/>
-	<Class name="SpaceWeatherPhenomena" type="iwxxm:SpaceWeatherPhenomenaType" propertyType="iwxxm:SpaceWeatherPhenomenaType"/>
+	<Class name="SpaceWeatherEffect" type="iwxxm:SpaceWeatherEffectType" propertyType="iwxxm:SpaceWeatherEffectType"/>
 	<!-- WAFC SIGWX F/C -->
-	<Class name="WorldAreaForecastCentre" type="iwxxm:WorldAreaForecastCentreType" propertyType="iwxxm:WorldAreaForecastCentreType"/>
+	<!-- These are not being used in XML types and propertyTypes, and thus does not required to be present -->
+	<!--
 	<Class name="WAFCJetStreamWindSymbol" type="iwxxm:WAFCJetStreamWindSymbolType" propertyType="iwxxm:WAFCJetStreamWindSymbolPropertyType"/>
+	<Class name="RadiationIncident" type="iwxxm:RadiationIncidentType" propertyType="iwxxm:RadiationIncidentPropertyType"/>
 	<Class name="DegreeOfTurbulence" type="iwxxm:DegreeOfTurbulenceType" propertyType="iwxxm:DegreeOfTurbulenceType"/>
 	<Class name="DegreeOfIcing" type="iwxxm:DegreeOfIcingType" propertyType="iwxxm:DegreeOfIcingType"/>
 	<Class name="CloudDistribution" type="iwxxm:CloudDistributionType" propertyType="iwxxm:CloudDistributionType"/>
 	<Class name="CloudType" type="iwxxm:CloudTypeType" propertyType="iwxxm:CloudTypeType"/>
+        -->
+	<!-- QVACI -->
+	<!-- These are not being used in XML types and propertyTypes, and thus does not required to be present -->
+	<!--
+	<Class name="VolcanicAshCloudConcentration" type="iwxxm:VolcanicAshCloudConcentrationType" propertyType="iwxxm:VolcanicAshCloudConcentrationPropertyType"/>
+        -->
+	<Class name="VolcanicAshConcentrations" type="iwxxm:VolcanicAshConcentrationsType" propertyType="iwxxm:VolcanicAshConcentrationsType"/>
+	<!-- VONA -->
+	<!-- These are not being used in XML types and propertyTypes, and thus does not required to be present -->
+	<!--
+	<Class name="ResuspendedVolcanicAsh" type="iwxxm:ResuspendedVolcanicAshType" propertyType="iwxxm:ResuspendedVolcanicAshPropertyType"/>
+	<Class name="VolcanicAshCloudVerticalExtent" type="iwxxm:VolcanicAshCloudVerticalExtentType" propertyType="iwxxm:VolcanicAshCloudVerticalExtentPropertyType"/>
+        -->
 	<!-- MET Feature -->
 	<Class name="MeteorologicalFeature" type="iwxxm:MeteorologicalFeatureType" propertyType="iwxxm:MeteorologicalFeaturePropertyType"/>
-	<Class name="TimeInstantOrPeriod" type="iwxxm:TimeInstantOrPeriodType" propertyType="iwxxm:TimeInstantOrPeriodPropertyType"/>
 	<Class name="ElevatedEnvelope" type="iwxxm:ElevatedEnvelopeType" propertyType="iwxxm:ElevatedEnvelopePropertyType"/>
 	<Class name="ElevatedLevel" type="iwxxm:ElevatedLevelType" propertyType="iwxxm:ElevatedLevelPropertyType"/>
 	<Class name="ElevatedPoint" type="iwxxm:ElevatedPointType" propertyType="iwxxm:ElevatedPointPropertyType"/>
 	<Class name="ElevatedCurve" type="iwxxm:ElevatedCurveType" propertyType="iwxxm:ElevatedCurvePropertyType"/>
 	<Class name="ElevatedSurface" type="iwxxm:ElevatedSurfaceType" propertyType="iwxxm:ElevatedSurfacePropertyType"/>
 	<Class name="ElevatedVolume" type="iwxxm:ElevatedVolumeType" propertyType="iwxxm:ElevatedVolumePropertyType"/>
-	<Class name="ValDistanceVerticalType" type="iwxxm:ValDistanceVerticalType" propertyType="iwxxm:ValDistanceVerticalType"/>
+	<!-- These are not being used in XML types and propertyTypes, and thus does not required to be present -->
+	<!--
+	<Class name="Volcano" type="iwxxm:VolcanoType" propertyType="iwxxm:VolcanoPropertyType"/>
+        <Class name="TropicalCyclone" type="iwxxm:TropicalCycloneType" propertyType="iwxxm:TropicalCyclonePropertyType"/>
+        -->
 	<Class name="MeteorologicalPhenomenon" type="iwxxm:MeteorologicalPhenomenonType" propertyType="iwxxm:MeteorologicalPhenomenonType"/>
+	<Class name="ValDistanceVerticalType" type="iwxxm:ValDistanceVerticalType" propertyType="iwxxm:ValDistanceVerticalType"/>
 	<!-- Common -->
 	<Class name="AerodromeForecastWeather" type="iwxxm:AerodromeForecastWeatherType" propertyType="iwxxm:AerodromeForecastWeatherType"/>
 	<Class name="SigConvectiveCloudType" type="iwxxm:SigConvectiveCloudTypeType" propertyType="iwxxm:SigConvectiveCloudTypeType"/>
@@ -299,7 +315,6 @@
         <Class name="AirspaceLayer" element="aixm:AirspaceLayer" type="aixm:AirspaceLayerType" propertyType="iwxxm:AirspaceLayerPropertyType"/>
 	<Class name="AirspaceVolume" element="aixm:AirspaceVolume" type="aixm:AirspaceVolumeType" propertyType="iwxxm:AirspaceVolumePropertyType"/>
         <Class name="AirportHeliport" element="aixm:AirportHeliport" type="aixm:AirportHeliportType" propertyType="iwxxm:AirportHeliportPropertyType"/>
-        <Class name="Runway" element="aixm:Runway" type="aixm:RunwayType" propertyType="iwxxm:RunwayPropertyType"/>
         <Class name="RunwayDirection" element="aixm:RunwayDirection" type="aixm:RunwayDirectionType" propertyType="iwxxm:RunwayDirectionPropertyType"/>
 	<Class name="CodeVerticalReferenceBaseType" type="aixm:CodeVerticalReferenceBaseType" propertyType="aixm:CodeVerticalReferenceBaseType"/>
 	<Class name="CodeValueInterpretationBaseType" type="aixm:CodeValueInterpretationBaseType" propertyType="aixm:CodeValueInterpretationBaseType"/>

@@ -4,7 +4,7 @@
 	XSLT to collect scopes, patterns and schematrons written in UML Class constraints in an XMI file to create a SCH file
 	Modified to also include schematron rules for codelist checking
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 25 April 2021.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 19 February 2024.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -192,10 +192,17 @@
 							<xsl:if test="not(//UML:Class[@name=$className]/@isAbstract = 'true' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')">
 								<xsl:value-of select="concat('//',$prefix,':',$className)"/>
 							</xsl:if>
-							<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$className]" mode="findSrcName">
-								<xsl:with-param name="prefix" select="$prefix"/>
-								<xsl:with-param name="parentIsAbstract" select="not(//UML:Class[@name=$className]/@isAbstract = 'true' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')"/>
-							</xsl:apply-templates>
+							<xsl:variable name="dummy">
+								<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$className]" mode="findSrcName">
+									<xsl:with-param name="prefix" select="$prefix"/>
+									<xsl:with-param name="parentIsAbstract" select="not(//UML:Class[@name=$className]/@isAbstract = 'true' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'enumeration' or //UML:Class[@name=$className]/UML:ModelElement.stereotype/UML:Stereotype/@name = 'codeList')"/>
+								</xsl:apply-templates>
+							</xsl:variable>
+							<xsl:value-of select="$dummy"/>
+							<!-- Include the class name if the class is abstract and there is no non-abstract extension -->
+							<xsl:if test="//UML:Class[@name=$className]/@isAbstract = 'true' and $dummy = ''">
+								<xsl:value-of select="concat('//',$prefix,':',$className)"/>
+							</xsl:if>
 						</xsl:attribute>
 						<xsl:element name='sch:assert'>
 							<xsl:attribute name="test">
@@ -213,7 +220,7 @@
 		<xsl:param name="prefix"/>
 		<xsl:param name="parentIsAbstract"/>
 		<xsl:variable name="sourceClassName" select="../UML:TaggedValue[@tag='ea_sourceName']/@value"/>
-		<xsl:if test="$parentIsAbstract or number(position()) &gt; 1">
+		<xsl:if test="($parentIsAbstract or number(position()) &gt; 1) and //UML:Class[@name=$sourceClassName]/@isAbstract = 'false'">
 			<xsl:value-of select="'|'"/>
 		</xsl:if>
 		<xsl:if test="//UML:Class[@name=$sourceClassName]/@isAbstract = 'false'">
@@ -221,7 +228,7 @@
 		</xsl:if>
 		<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$sourceClassName]" mode="findSrcName">
 			<xsl:with-param name="prefix" select="$prefix"/>
-			<xsl:with-param name="parentIsAbstract" select="//UML:Class[@name=$sourceClassName]/@isAbstract = 'false'"/>
+			<xsl:with-param name="parentIsAbstract" select="$parentIsAbstract or number(position()) &gt; 1 or //UML:Class[@name=$sourceClassName]/@isAbstract = 'false'"/>
 		</xsl:apply-templates>
 	</xsl:template>
 
