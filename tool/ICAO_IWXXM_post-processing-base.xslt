@@ -349,11 +349,6 @@
 				<xsl:with-param name="ref" select="'aixm:AirportHeliport'"/>
 			</xsl:call-template>
 			<xsl:call-template name="propertyType">
-				<xsl:with-param name="name" select="'RunwayPropertyType'"/>
-				<xsl:with-param name="base" select="'aixm:AbstractAIXMFeatureType'"/>
-				<xsl:with-param name="ref" select="'aixm:Runway'"/>
-			</xsl:call-template>
-			<xsl:call-template name="propertyType">
 				<xsl:with-param name="name" select="'RunwayDirectionPropertyType'"/>
 				<xsl:with-param name="base" select="'aixm:AbstractAIXMFeatureType'"/>
 				<xsl:with-param name="ref" select="'aixm:RunwayDirection'"/>
