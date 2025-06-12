@@ -539,9 +539,7 @@ Mean runway visual range distance shall be reported in meters ("m").
 
 To report a mean RVR of at least 2000 meters, mean RVR is reported as 2000 meters and the operator is reported as "above"
 
-Annex 3:
-Table A3-2 "RVR/RVR"
-Section 4.3.6.6</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.3.6.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -578,13 +576,11 @@ To report a mean RVR of at least 2000 metres, mean RVR is reported as 2000 metre
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The runway visual range tendency (up, down, none).
+            <xsl:element name="documentation">The runway visual range tendency (up, down, no_change).
 
-If the runway visual range values during the 10-minute period have shown a distinct tendency, such that the mean during the first 5 minutes varies by 100 m or more from the mean during the second 5 minutes of the period, this should be indicated. When the variation of the runway visual range values shows an upward or downward tendency, this should be indicated by "Up" or "Down", respectively. In circumstances when actual fluctuations during the 10-minute period show no distinct tendency, this should be indicated using "No Change?. When indications of tendency are not available, no information should be reported
+If the runway visual range values during the 10-minute period have shown a distinct tendency, such that the mean during the first 5 minutes varies by 100 m or more from the mean during the second 5 minutes of the period, this should be indicated. When the variation of the runway visual range values shows an upward or downward tendency, this should be indicated by "Up" or "Down", respectively. In circumstances when actual fluctuations during the 10-minute period show no distinct tendency, this should be indicated using "No Change". When indications of tendency are not available, no information should be reported.
 
-ICAO Annex 3 / WMO No. 49:
-Table A3-2 Note 9
-Section 4.3.6.6a</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.3.6.6.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -876,8 +872,7 @@ The term sea surface temperature is generally meant to be representative of the 
 
 Temperatures shall be reported in degrees Celsius ("Cel").
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.8.1.5a</xsl:element>
+See ICAO PAN-MET (Doc 10157) Section 2.2.8.1.5.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -919,11 +914,7 @@ Significant wave height shall be reported in meters ("m").</xsl:element>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The state of the sea observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.8.1.5a
-
-WMO 306:
-Table 3700</xsl:element>
+See ICAO PANS-MET Doc 10157) Section 2.2.8.1.5 and WMO No.306 Vol. I.1 Table 3700.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1180,7 +1171,7 @@ a) visibility, 10km or more, and the lowest visibility is not reported
 b) no cloud of operational significance
 c) no weather of significance to aviation
 
-Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO Annex 3 / WMO No. 49-2 Section 2.2.</xsl:element>
+Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO PANS-MET (Doc 10157) Section 2.2.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1324,7 +1315,7 @@ a) visibility, 10km or more, and the lowest visibility is not reported
 b) no cloud of operational significance
 c) no weather of significance to aviation
 
-Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO Annex 3 / WMO No. 49-2 Section 2.2.</xsl:element>
+Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO PANS-MET (Doc 10157) Section 2.2.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1659,8 +1650,7 @@ Wind direction shall be given in degrees from true North. Plane angle unit of me
          <xsl:element name="annotation">
             <xsl:element name="documentation">The average observed wind speed over the past ten minutes
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.1.5.2a
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2a.
 
 Wind speeds shall be provided in either two units of measures: "m/s" or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
@@ -1704,8 +1694,7 @@ When no operator is reported, wind speed is an exact value with identical semant
          <xsl:element name="annotation">
             <xsl:element name="documentation">Variations from the mean wind speed (gusts) during the past 10 minutes.
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.1.5.2c
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2c.
 
 Wind gusts shall be provided in either two units of measures: "m/s" or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
@@ -1751,8 +1740,7 @@ When no operator is reported, wind gust speed is an exact value with identical s
 
 This corresponds to the dxdxdx part of the reported variation dndndnVdxdxdx in TAC.
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.1.5.2b 1)</xsl:element>
+See ICAO PANS-MET Section 2.2.1.5.2b 1)</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1775,8 +1763,7 @@ Section 4.1.5.2b 1)</xsl:element>
 
 This corresponds to the dndndn part of the reported variation dndndnVdxdxdx in TAC.
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.1.5.2b 1)</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2b 1)</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1845,13 +1832,11 @@ Measured prevailing horizontal visibility shall be reported in meters ("m") only
 
 The greatest visibility value, observed in accordance with the definition of "visibility", which is reached within at least half the horizon circle or within at least half of the surface of the aerodrome. These areas could comprise contiguous or non-contiguous sectors.
 
-Note: This value may be assessed by human observation and/or instrumented systems. When instruments are installed, they are
-used to obtain the best estimate of the prevailing visibility.
+Note: This value may be assessed by human observation and/or instrumented systems. When instruments are installed, they are used to obtain the best estimate of the prevailing visibility.
 
 To report a prevailing visibility of at least 10000 meters, prevailing visibility is reported as 10000 meters and the prevailing visibility operator is reported as "above".
 
-ICAO Annex 3 / WMO No. 49-2:
-Section 4.2.4.4b</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.2.4.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1897,7 +1882,7 @@ When no operator is reported, prevailing visibility represents an exact value wi
 
 Measured minimum visibility shall be reported in meters ("m") only.
 
-ICAO Annex 3 / WMO No. 49-2 Section 4.2.4.4a:
+ICAO PANS-MET Section 2.2.2.4.4:
 "When the visibility is not the same in different directions and
 a) when the lowest visibility is different from the prevailing visibility, and
   1) less than 1500 m or
@@ -2078,7 +2063,7 @@ a) visibility, 10km or more, and the lowest visibility is not reported
 b) no cloud of operational significance
 c) no weather of significance to aviation
 
-Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO Annex 3 / WMO No. 49-2 Section 2.2.</xsl:element>
+Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO PANS-MET (Doc 10157) Section 2.1.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2124,8 +2109,7 @@ Information on visibility, runway visual range, present weather and cloud amount
          <xsl:element name="annotation">
             <xsl:element name="documentation">The maximum air temperature expressed in degrees Celsius ("Cel")
 
-ICAO Annex 3 / WMO No. 49-2:
-"TX"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.2.5.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2146,8 +2130,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">The time of occurrence of the maximum air temperature.  This must be within the period of the phenomenon time for this forecast record
 
-ICAO Annex 3 / WMO No. 49-2:
-"TX"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.2.5.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2168,8 +2151,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">The minimum air temperature expressed in degrees Celsius ("Cel")
 
-ICAO Annex 3 / WMO No. 49-2:
-"TN"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.2.5.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2190,8 +2172,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">The time of occurrence of the minimum air temperature.  This must be within the period of the phenomenon time for this forecast record
 
-ICAO Annex 3 / WMO No. 49-2:
-"TN"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.2.5.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2209,9 +2190,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">Conditions are expected to reach or pass through specified threshold values at a regular or irregular rate and at an unspecified time during the time period.  The time period should normally not exceed 2 hours but in any case should not exceed 4 hours.
 
-ICAO Annex 3 / WMO No. 49-2:
-"BECMG"
-</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.3.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2229,8 +2208,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">Expected temporary fluctuations to meteorological conditions which reach or pass specified threshold criteria and last for a period of less than one hour in each instance and in the aggregate cover less than half of the forecast period during which the fluctuations are expected to occur.
 
-ICAO Annex 3 / WMO No. 49-2:
-"TEMPO"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.3.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2248,8 +2226,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">One set of prevailing weather conditions is expected to change significantly and more or less completely to a different set of conditions. Conditions in a FROM group supersede conditions in earlier groups.
 
-ICAO Annex 3 / WMO No. 49-2:
-"FM"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.3.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2267,8 +2244,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">A 30% probability of occurrence of an alternative value of a forecast element or elements.
 
-ICAO Annex 3 / WMO No. 49-2:
-"PROB30"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2286,8 +2262,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">A 30% probability of occurrence of temporary conditions of an alternative value of a forecast element or elements.
 
-ICAO Annex 3 / WMO No. 49-2:
-"PROB30 TEMPO"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2305,8 +2280,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">A 40% probability of occurrence of an alternative value of a forecast element or elements.
 
-ICAO Annex 3 / WMO No. 49-2:
-"PROB40"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2324,8 +2298,7 @@ ICAO Annex 3 / WMO No. 49-2:
          <xsl:element name="annotation">
             <xsl:element name="documentation">A 40% probability of occurrence of temporary conditions of an alternative value of a forecast element or elements.
 
-ICAO Annex 3 / WMO No. 49-2:
-"PROB40 TEMPO"</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 4.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2452,7 +2425,7 @@ ICAO Annex 3 / WMO No. 49-2:
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">Forecast that modifies the base forecast.  While there is no maximum number of forecasts, this should normally not exceed five in number. ICAO Annex 3 / WMO No. 49-2: Section 1.5: "The number of change and probability groups should be kept to a minimum and should not normally exceed five groups".</xsl:element>
+            <xsl:element name="documentation">Forecast that modifies the base forecast.  While there is no maximum number of forecasts, this should normally not exceed five in number. ICAO PANS-MET (Doc 10157): Section 4.1.5: "The number of change and probability groups should be kept to a minimum and should not normally exceed five groups".</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2665,10 +2638,7 @@ ICAO Annex 3 / WMO No. 49-2:
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The ATS unit serving the FIR or CTA to which the SIGMET refers
-
-ICAO Annex 3 / WMO No. 49-2:
-A6-1: "Location indicator of FIR/CTA"</xsl:element>
+            <xsl:element name="documentation">The ATS unit serving the FIR or CTA to which the SIGMET refers.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2738,7 +2708,7 @@ A6-1: "Location indicator of FIR/CTA"</xsl:element>
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The valid period for the entire report covering all observations and forecast conditions.  Each observation/forecast phenomenon includes its own temporal description for the described meteorological conditions, which is represented as phenomenonTime.
+            <xsl:element name="documentation">The valid period for the entire report covering all observations and forecast conditions.  Each observation/forecast phenomenon includes its own temporal description for the described meteorological conditions.
 
 For example, an issued tropical cyclone SIGMET may be valid from 1600 UTC to 2200 UTC with an observed position at 1600 UTC and a forecast position of the centre of the tropical cyclone at 2200 UTC.  In this case the SIGMET validPeriod would be 1600 UTC to 2200 UTC, the analysis phenomenonTime would be 1600 UTC, and the forecastPositionAnalysis phenomenonTime would be 2200 UTC.</xsl:element>
          </xsl:element>
@@ -2886,7 +2856,7 @@ The expected end of occurrence of volcanic ash ("NO VA EXP") is indicated with a
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomenon historically reported in ICAO Annex 3 / WMO No. 49-2: a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
+            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomenon historically reported in ICAO PANS-MET (Doc 10157): a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3343,7 +3313,7 @@ Each analysis has a single SIGMETEvolvingConditionCollection as its result.  </x
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomenon historically reported in ICAO Annex 3 / WMO No. 49-2: a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
+            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomenon historically reported in ICAO PANS-MET (Doc 10157): a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3518,10 +3488,7 @@ Cloud base and top may differ from but should be within the AIRMET base and top 
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The surface visibility.  Only used with SFC VIS AIRMETs. Horizontal surface visibility unit of measure shall be given as "m" (metre).
-
-ICAO Annex 3 / WMO No. 49-2:
-Appendix 6 Section 2.1</xsl:element>
+            <xsl:element name="documentation">The surface visibility.  Only used with SFC VIS AIRMETs. Horizontal surface visibility unit of measure shall be given as "m" (metre).</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3656,7 +3623,7 @@ Appendix 6 Section 2.1</xsl:element>
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The ATS unit serving the FIR or CTA to which the AIRMET refers.  ICAO Annex 3 / WMO No. 49-2: A6-1: "Location indicator of FIR/CTA"</xsl:element>
+            <xsl:element name="documentation">The ATS unit serving the FIR or CTA to which the AIRMET refers.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -3726,7 +3693,7 @@ Appendix 6 Section 2.1</xsl:element>
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The valid period for the entire report, including all observations and forecast conditions.  Each observation/forecast phenomenon includes its own period of validity for described meteorological conditions, which is represented as the O&amp;amp;M Observation validTime.</xsl:element>
+            <xsl:element name="documentation">The valid period for the entire report, including all observations and forecast conditions.  Each observation/forecast phenomenon includes its own period of validity for described meteorological conditions.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5173,6 +5140,9 @@ When time of observation is NOT PROVIDED, it shall be represented with a nil in 
                  match="xs:complexType[@name='SpaceWeatherRegionType']//xs:sequence/xs:element[@name='locationIndicator']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
+         <xsl:attribute name="nillable">
+            <xsl:value-of select="'true'"/>
+         </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
       </xsl:element>
    </xsl:template>
@@ -5442,6 +5412,25 @@ When no subsequent advisory is expected to be issued it should be indicated by a
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The time at which meteorological phenomena occur</xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SpaceWeatherAnalysisType']//xs:sequence/xs:element[@name='intensityAndRegion']">
+      <xsl:param name="typeName" select="@type"/>
+      <xsl:element name="{local-name()}">
+         <xsl:attribute name="nillable">
+            <xsl:value-of select="'true'"/>
+         </xsl:attribute>
+         <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='SpaceWeatherAnalysisType']//xs:attribute[@name='intensityAndRegion']">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="annotation">
+            <xsl:element name="documentation">Container of intensity of the space weather phenomena and affected region(s)</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5846,6 +5835,25 @@ Wind speeds shall be provided in unit of measurer "m/s" (meters per second).</xs
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">Maximum height of ash cloud or eruption column at initialisation time in meters ("m") or feet ("[ft_i]"). Use negative values to represent levels below mean sea level.</xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='QuantitativeVolcanicAshConcentrationInformationType']//xs:sequence/xs:element[@name='remarks']">
+      <xsl:param name="typeName" select="@type"/>
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='QuantitativeVolcanicAshConcentrationInformationType']//xs:attribute[@name='remarks']">
+      <xsl:element name="{local-name()}">
+         <xsl:attribute name="use">
+            <xsl:value-of select="'required'"/>
+         </xsl:attribute>
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="annotation">
+            <xsl:element name="documentation">Additional information to be provided with the QVACI.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
