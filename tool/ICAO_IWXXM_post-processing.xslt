@@ -4640,7 +4640,7 @@ An unknown State or region shall be indicated with a nil in stateOrRegion and ni
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:sequence/xs:element[@name='sourceElevation']">
+                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:sequence/xs:element[@name='sourceElevationMSL']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
          <xsl:attribute name="nillable">
@@ -4650,13 +4650,13 @@ An unknown State or region shall be indicated with a nil in stateOrRegion and ni
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:attribute[@name='sourceElevation']">
+                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:attribute[@name='sourceElevationMSL']">
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">Elevation of the vent or the average height of volcanic ash field for re-suspended volcanic ash from mean sea level.  If reported it shall either be in meters ("m") or feet ("[ft_i]"). Use negative values to represent levels below mean sea level.
 
-When the elevation is unknown, it shall be represented with a nil in sourceElevation and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
+When the elevation is unknown, it shall be represented with a nil in sourceElevationMSL and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5691,7 +5691,7 @@ When no subsequent advisory is expected to be issued it should be indicated by a
          <xsl:element name="annotation">
             <xsl:element name="documentation">Horizontal wind speed at the indicated position.
 
-Wind speeds shall be provided in unit of measurer "m/s" (meters per second).</xsl:element>
+Wind speeds shall be provided in either two units of measure, "m/s" (meters per second) or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
