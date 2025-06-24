@@ -914,7 +914,7 @@ Significant wave height shall be reported in meters ("m").</xsl:element>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The state of the sea observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations
 
-See ICAO PANS-MET Doc 10157) Section 2.2.8.1.5 and WMO No.306 Vol. I.1 Table 3700.</xsl:element>
+See ICAO PANS-MET Doc 10157) Section 2.2.8.1.5 and the Manual on Codes (WMO No.306), Vol. I.1 Table 3700.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2063,7 +2063,7 @@ a) visibility, 10km or more, and the lowest visibility is not reported
 b) no cloud of operational significance
 c) no weather of significance to aviation
 
-Information on visibility, runway visual range, present weather and cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO PANS-MET (Doc 10157) Section 2.1.1.4.</xsl:element>
+Information on visibility, runway visual range, present weather, cloud amount, cloud type and height of cloud base shall not be reported.  See ICAO PANS-MET (Doc 10157) Section 2.1.1.4.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -2856,7 +2856,7 @@ The expected end of occurrence of volcanic ash ("NO VA EXP") is indicated with a
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomenon historically reported in ICAO PANS-MET (Doc 10157): a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
+            <xsl:element name="documentation">The expected geographic region(s) affected by the reported phenomenon at a particular time (thunderstorms, volcanic ash, etc.).  This geometry covers all combinations of phenomena historically reported in ICAO PANS-MET (Doc 10157): a boundary with a base and top, a TC centre position, and a VA line with a width</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -4640,7 +4640,7 @@ An unknown State or region shall be indicated with a nil in stateOrRegion and ni
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:sequence/xs:element[@name='sourceElevationMSL']">
+                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:sequence/xs:element[@name='sourceElevationAMSL']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
          <xsl:attribute name="nillable">
@@ -4650,13 +4650,13 @@ An unknown State or region shall be indicated with a nil in stateOrRegion and ni
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:attribute[@name='sourceElevationMSL']">
+                 match="xs:complexType[@name='VolcanicAshAdvisoryType']//xs:attribute[@name='sourceElevationAMSL']">
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">Elevation of the vent or the average height of volcanic ash field for re-suspended volcanic ash from mean sea level.  If reported it shall either be in meters ("m") or feet ("[ft_i]"). Use negative values to represent levels below mean sea level.
 
-When the elevation is unknown, it shall be represented with a nil in sourceElevationMSL and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
+When the elevation is unknown, it shall be represented with a nil in sourceElevationAMSL and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5710,7 +5710,7 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the 80 knot isotach above the jet stream measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the 80 knot isotach above the jet stream measured from vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5745,7 +5745,7 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
       <xsl:element name="{local-name()}">
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the 80 knot isotach below the jet stream measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the 80 knot isotach below the jet stream measured from vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -5785,6 +5785,31 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
             <xsl:element name="annotation">
                <xsl:element name="documentation">
                   <xsl:value-of select="'Extension block for optional and/or additional parameters for element WAFSSignificantWeatherForecast'"/>
+               </xsl:element>
+            </xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='QuantitativeVolcanicAshConcentrationInformationType']//xs:sequence">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="element">
+            <xsl:attribute name="name">
+               <xsl:value-of select="'extension'"/>
+            </xsl:attribute>
+            <xsl:attribute name="type">
+               <xsl:value-of select="'iwxxm:ExtensionType'"/>
+            </xsl:attribute>
+            <xsl:attribute name="minOccurs">
+               <xsl:value-of select="'0'"/>
+            </xsl:attribute>
+            <xsl:attribute name="maxOccurs">
+               <xsl:value-of select="'unbounded'"/>
+            </xsl:attribute>
+            <xsl:element name="annotation">
+               <xsl:element name="documentation">
+                  <xsl:value-of select="'Extension block for optional and/or additional parameters for element QuantitativeVolcanicAshConcentrationInformation'"/>
                </xsl:element>
             </xsl:element>
          </xsl:element>
@@ -5858,25 +5883,6 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
       </xsl:element>
    </xsl:template>
    <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshCloudConcentrationType']//xs:sequence/xs:element[@name='ashDensityCategory']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='VolcanicAshCloudConcentrationType']//xs:attribute[@name='ashDensityCategory']">
-      <xsl:element name="{local-name()}">
-         <xsl:attribute name="use">
-            <xsl:value-of select="'required'"/>
-         </xsl:attribute>
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Categorical description of ash density within the cloud.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
                  match="xs:complexType[@name='VolcanicAshCloudConcentrationType']//xs:sequence/xs:element[@name='ashDensityEqualsOrExceeds']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
@@ -5936,86 +5942,6 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">Direction of movement of the observed cloud.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:sequence/xs:element[@name='GREEN']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:attribute[@name='GREEN']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Green.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:sequence/xs:element[@name='YELLOW']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:attribute[@name='YELLOW']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Yellow.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:sequence/xs:element[@name='ORANGE']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:attribute[@name='ORANGE']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Orange.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:sequence/xs:element[@name='RED']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:attribute[@name='RED']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Red.</xsl:element>
-         </xsl:element>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:sequence/xs:element[@name='UNASSIGNED']">
-      <xsl:param name="typeName" select="@type"/>
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                 match="xs:complexType[@name='AviationColourCodeType']//xs:attribute[@name='UNASSIGNED']">
-      <xsl:element name="{local-name()}">
-         <xsl:apply-templates select="@*|node()"/>
-         <xsl:element name="annotation">
-            <xsl:element name="documentation">Unassigned.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6086,6 +6012,9 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
                  match="xs:complexType[@name='VolcanoObservatoryNoticeForAviationType']//xs:sequence/xs:element[@name='currentColourCode']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
+         <xsl:attribute name="nillable">
+            <xsl:value-of select="'true'"/>
+         </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
       </xsl:element>
    </xsl:template>
@@ -6105,6 +6034,9 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
                  match="xs:complexType[@name='VolcanoObservatoryNoticeForAviationType']//xs:sequence/xs:element[@name='previousColourCode']">
       <xsl:param name="typeName" select="@type"/>
       <xsl:element name="{local-name()}">
+         <xsl:attribute name="nillable">
+            <xsl:value-of select="'true'"/>
+         </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
       </xsl:element>
    </xsl:template>
@@ -6197,7 +6129,7 @@ Wind speeds shall be provided in either two units of measure, "m/s" (meters per 
          <xsl:element name="annotation">
             <xsl:element name="documentation">Average height of re-suspended volcanic ash field.
 
-When the height is UNKNOWN, </xsl:element>
+When the height is unknown, it shall be represented with a nil in name and nilReason 'http://codes.wmo.int/iwxxm/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6396,7 +6328,7 @@ When the height is UNKNOWN, </xsl:element>
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the upper surface measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the upper surface measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6450,7 +6382,7 @@ When the height is UNKNOWN, </xsl:element>
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the lower surface measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the lower surface measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6483,6 +6415,31 @@ When the height is UNKNOWN, </xsl:element>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
             <xsl:element name="documentation">A code indicating how a value needs to be interpreted when used as a filter or condition. For example: above the value or below the value. </xsl:element>
+         </xsl:element>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 match="xs:complexType[@name='MeteorologicalFeatureType']//xs:sequence">
+      <xsl:element name="{local-name()}">
+         <xsl:apply-templates select="@*|node()"/>
+         <xsl:element name="element">
+            <xsl:attribute name="name">
+               <xsl:value-of select="'extension'"/>
+            </xsl:attribute>
+            <xsl:attribute name="type">
+               <xsl:value-of select="'iwxxm:ExtensionType'"/>
+            </xsl:attribute>
+            <xsl:attribute name="minOccurs">
+               <xsl:value-of select="'0'"/>
+            </xsl:attribute>
+            <xsl:attribute name="maxOccurs">
+               <xsl:value-of select="'unbounded'"/>
+            </xsl:attribute>
+            <xsl:element name="annotation">
+               <xsl:element name="documentation">
+                  <xsl:value-of select="'Extension block for optional and/or additional parameters for element MeteorologicalFeature'"/>
+               </xsl:element>
+            </xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6655,7 +6612,7 @@ The actual featureType to be used in describing the properties shall be constrai
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the surface measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the surface measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6856,7 +6813,7 @@ When iwxxm:phenomenonCategory="weatherForecasts" it is the forecast time of the 
          <xsl:element name="annotation">
             <xsl:element name="documentation">Name of the Volcano.
 
-When the name is unknown, it shall be represented with a nil in name and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
+When the name is unknown, it shall be represented with a nil in name and nilReason 'http://codes.wmo.int/iwxxm/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6877,7 +6834,7 @@ When the name is unknown, it shall be represented with a nil in name and nilReas
          <xsl:element name="annotation">
             <xsl:element name="documentation">International Association of Volcanology and Chemistry of the Earth's Interior (IAVCEI) number of the volcano.
 
-When the IAVCEI number is unknown, it shall be represented with a nil in IAVCEINumber and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
+When the IAVCEI number is unknown, it shall be represented with a nil in IAVCEINumber and nilReason 'http://codes.wmo.int/iwxxm/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6898,7 +6855,7 @@ When the IAVCEI number is unknown, it shall be represented with a nil in IAVCEIN
          <xsl:element name="annotation">
             <xsl:element name="documentation">Elevation of the vent of the volcano from mean sea level.  If reported it shall either be in meters ("m") or feet ("[ft_i]"). Use negative values to represent levels below mean sea level.
 
-When the elevation is unknown, it shall be represented with a nil in sourceElevation and nilReason 'http://codes.wmo.int/common/nil/unknown'.</xsl:element>
+When the elevation is unknown, it shall be represented with a nil in sourceElevation and nilReason 'http://codes.wmo.int/iwxxm/nil/unknown'.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -6984,7 +6941,7 @@ When the elevation is unknown, it shall be represented with a nil in sourceEleva
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the upper surface measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the upper surface measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -7022,7 +6979,7 @@ When the elevation is unknown, it shall be represented with a nil in sourceEleva
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the lower surface measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the lower surface measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -7060,7 +7017,7 @@ When the elevation is unknown, it shall be represented with a nil in sourceEleva
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the point measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the point measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -7114,7 +7071,7 @@ When the elevation is unknown, it shall be represented with a nil in sourceEleva
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the curve measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the curve measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -7165,7 +7122,7 @@ When the elevation is unknown, it shall be represented with a nil in sourceEleva
          </xsl:attribute>
          <xsl:apply-templates select="@*|node()"/>
          <xsl:element name="annotation">
-            <xsl:element name="documentation">The vertical distance of the curve measured from Mean Sea Level (MSL).</xsl:element>
+            <xsl:element name="documentation">The vertical distance of the curve measured from the vertical reference.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
