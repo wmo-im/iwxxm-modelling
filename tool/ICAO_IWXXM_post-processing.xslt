@@ -914,7 +914,7 @@ Significant wave height shall be reported in meters ("m").</xsl:element>
          <xsl:element name="annotation">
             <xsl:element name="documentation">The state of the sea observed by aeronautical meteorological stations established on offshore structures in support of helicopter operations
 
-See ICAO PANS-MET Doc 10157) Section 2.2.8.1.5 and the Manual on Codes (WMO No.306), Vol. I.1 Table 3700.</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.8.1.5 and the Manual on Codes (WMO No.306), Vol. I.1 Table 3700.</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1650,7 +1650,7 @@ Wind direction shall be given in degrees from true North. Plane angle unit of me
          <xsl:element name="annotation">
             <xsl:element name="documentation">The average observed wind speed over the past ten minutes
 
-See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2a.
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2 a).
 
 Wind speeds shall be provided in either two units of measures: "m/s" or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
@@ -1694,7 +1694,7 @@ When no operator is reported, wind speed is an exact value with identical semant
          <xsl:element name="annotation">
             <xsl:element name="documentation">Variations from the mean wind speed (gusts) during the past 10 minutes.
 
-See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2c.
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2 c).
 
 Wind gusts shall be provided in either two units of measures: "m/s" or "[kn_i]" (knot).</xsl:element>
          </xsl:element>
@@ -1740,7 +1740,7 @@ When no operator is reported, wind gust speed is an exact value with identical s
 
 This corresponds to the dxdxdx part of the reported variation dndndnVdxdxdx in TAC.
 
-See ICAO PANS-MET Section 2.2.1.5.2b 1)</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2 b) 1)</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
@@ -1763,7 +1763,7 @@ See ICAO PANS-MET Section 2.2.1.5.2b 1)</xsl:element>
 
 This corresponds to the dndndn part of the reported variation dndndnVdxdxdx in TAC.
 
-See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2b 1)</xsl:element>
+See ICAO PANS-MET (Doc 10157) Section 2.2.1.5.2 b) 1)</xsl:element>
          </xsl:element>
       </xsl:element>
    </xsl:template>
