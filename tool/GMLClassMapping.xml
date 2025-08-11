@@ -274,6 +274,7 @@
         -->
 	<Class name="VolcanicAshConcentrations" type="iwxxm:VolcanicAshConcentrationsType" propertyType="iwxxm:VolcanicAshConcentrationsType"/>
 	<!-- VONA -->
+	<Class name="AviationColourCode" type="iwxxm:AviationColourCodeType" propertyType="iwxxm:AviationColourCodeType"/>
 	<!-- These are not being used in XML types and propertyTypes, and thus does not required to be present -->
 	<!--
 	<Class name="ResuspendedVolcanicAsh" type="iwxxm:ResuspendedVolcanicAshType" propertyType="iwxxm:ResuspendedVolcanicAshPropertyType"/>
