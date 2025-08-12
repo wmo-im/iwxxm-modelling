@@ -4,7 +4,7 @@
 	XSLT to collect scopes, patterns and schematrons written in UML Class constraints in an XMI file to create a SCH file
 	Modified to also include schematron rules for codelist checking
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 19 February 2024.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 22 June 2025.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -24,8 +24,16 @@
 
 		<xsl:param name="namespace_prefix" select="substring-before(./XMI.content/UML:TaggedValue[@tag='xmlns']/@value,'#')"/>
 		<xsl:param name="namespace_uri" select="substring-before(./XMI.content/UML:TaggedValue[@tag='targetNamespace']/@value,'#')"/>
+		<xsl:param name="schematronVersion" select="string(./XMI.content/UML:TaggedValue[@tag='schematronVersion']/@value)"/>
 
-		<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
+		<xsl:element name="sch:schema">
+			<xsl:namespace name="sch" select="'http://purl.oclc.org/dsdl/schematron'"/>
+			<xsl:attribute name="queryBinding">
+				<xsl:value-of select="'xslt2'"/>
+			</xsl:attribute>
+			<xsl:attribute name="schemaVersion">
+				<xsl:value-of select="$schematronVersion"/>
+			</xsl:attribute>
 
 			<sch:title>Schematron validation</sch:title>
 
@@ -60,9 +68,15 @@
 				<xsl:with-param name="prefix" select="'skos'"/>
 				<xsl:with-param name="uri" select="'http://www.w3.org/2004/02/skos/core#'"/>
 			</xsl:call-template>
+			<!--
 			<xsl:call-template name="namespace">
 				<xsl:with-param name="prefix" select="'reg'"/>
 				<xsl:with-param name="uri" select="'http://purl.org/linked-data/registry#'"/>
+			</xsl:call-template>
+			-->
+			<xsl:call-template name="namespace">
+				<xsl:with-param name="prefix" select="'owl'"/>
+				<xsl:with-param name="uri" select="'http://www.w3.org/2002/07/owl#'"/>
 			</xsl:call-template>
 			<!--
 			<xsl:call-template name="namespace">
@@ -98,9 +112,18 @@
 				<xsl:with-param name="prefix" select="$namespace_prefix"/>
 			</xsl:apply-templates>
 
-			<!-- Add rule for nilReason -->
-			<xsl:call-template name="nilReason">
+			<!-- Add rules for nilReason -->
+			<!-- Legacy root elements -->
+			<xsl:call-template name="nilReason-base">
 				<xsl:with-param name="prefix" select="$namespace_prefix"/>
+				<xsl:with-param name="subpath" select="'common'"/>
+				<xsl:with-param name="subpathType" select="'Legacy'"/>
+			</xsl:call-template>
+			<!-- Other root elements -->
+			<xsl:call-template name="nilReason-base">
+				<xsl:with-param name="prefix" select="$namespace_prefix"/>
+				<xsl:with-param name="subpath" select="'iwxxm'"/>
+				<xsl:with-param name="subpathType" select="''"/>
 			</xsl:call-template>
 
 			<!-- Add rule for extension -->
@@ -108,7 +131,7 @@
 				<xsl:with-param name="prefix" select="$namespace_prefix"/>
 			</xsl:call-template>
 
-		</sch:schema>
+		</xsl:element>
 
 	</xsl:template>
 	
@@ -249,9 +272,17 @@
 				<xsl:attribute name="context">
 					<xsl:value-of select="concat('//',$prefix,':',$className)"/>
 				</xsl:attribute>
+				<xsl:element name='sch:let'>
+					<xsl:attribute name="name">
+						<xsl:value-of select="'iwxxmVersion'"/>
+					</xsl:attribute>
+					<xsl:attribute name="value">
+						<xsl:value-of select="'namespace-uri()'"/>
+					</xsl:attribute>
+				</xsl:element>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@*[local-name()=''about''] or @nilReason')"/>
+						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
 					</xsl:attribute>
 					<xsl:value-of select="concat('Element in ',$prefix,':',$className,' should be a member of code list ',$codeList)"/>
 				</xsl:element>
@@ -301,9 +332,17 @@
 						<xsl:with-param name="selfName" select="$selfName"/>
 					</xsl:apply-templates>
 				</xsl:attribute>
+				<xsl:element name='sch:let'>
+					<xsl:attribute name="name">
+						<xsl:value-of select="'iwxxmVersion'"/>
+					</xsl:attribute>
+					<xsl:attribute name="value">
+						<xsl:value-of select="'namespace-uri()'"/>
+					</xsl:attribute>
+				</xsl:element>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@*[local-name()=''about''] or @nilReason')"/>
+						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
 					</xsl:attribute>
 					<xsl:value-of select="concat('Element in ',$prefix,':',$parentName,'/',$prefix,':',$selfName)"/>
 					<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$parentName]" mode="findSrcName_codelist">
@@ -349,22 +388,34 @@
 		</xsl:apply-templates>
 	</xsl:template>
 
-	<!-- Add a schematron rule to check the nilReason attributes -->
-	<xsl:template name="nilReason">
+	<!-- Add a schematron rule to check nilReason attributes within root elements -->
+	<xsl:template name="nilReason-base">
 		<xsl:param name="prefix"/>
+		<xsl:param name="subpath"/>
+		<xsl:param name="subpathType"/>
+		<xsl:variable name="rootElementPointer" select="./XMI.content/UML:TaggedValue[@tag=concat('isRootElement',$subpathType) and @value='true']/@modelElement"/>
+		<xsl:variable name="rootElementName" select="//UML:Class[@xmi.id=$rootElementPointer]/@name"/>
 		<xsl:element name='sch:pattern'>
 			<xsl:attribute name="id">
-				<xsl:value-of select="'IWXXM.nilReasonCheck'"/>
+				<xsl:value-of select="concat('IWXXM.nilReasonCheck',$subpathType)"/>
 			</xsl:attribute>
 			<xsl:element name='sch:rule'>
 				<xsl:attribute name="context">
-					<xsl:value-of select="concat('//',$prefix,':*')"/>
+					<xsl:value-of select="concat('//',string-join($rootElementName,'|//'))"/>
 				</xsl:attribute>
+				<xsl:element name='sch:let'>
+					<xsl:attribute name="name">
+						<xsl:value-of select="'iwxxmVersion'"/>
+					</xsl:attribute>
+					<xsl:attribute name="value">
+						<xsl:value-of select="'namespace-uri()'"/>
+					</xsl:attribute>
+				</xsl:element>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="'( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-common-nil.rdf'')/rdf:RDF/*/skos:member/*/@*[local-name()=''about''] ) else( true() ) )'"/>
+						<xsl:value-of select="concat('( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-',$subpath,'-nil.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about ) else( true() ) )')"/>
 					</xsl:attribute>
-					<xsl:value-of select="string('IWXXM.nilReasonCheck: nilReason attributes should be a member of http://codes.wmo.int/common/nil')"/>
+					<xsl:value-of select="concat('IWXXM.nilReasonCheck',$subpathType,': nilReason attributes should be a member of http://codes.wmo.int/',$subpath,'/nil')"/>
 				</xsl:element>
 			</xsl:element>
 		</xsl:element>
