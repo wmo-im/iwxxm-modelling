@@ -4,7 +4,7 @@
 	XSLT to collect scopes, patterns and schematrons written in UML Class constraints in an XMI file to create a SCH file
 	Modified to also include schematron rules for codelist checking
 
-	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 22 June 2025.
+	Created by B.L. Choy (blchoy.hko@gmail.com).  First created on 31 March 2016.  Last updated on 17 November 2025.
 
 	Tested with the following:
 		(1) XMI: Created by EA 12.1 Build 1224 with UML 1.3 (XMI 1.1)
@@ -272,17 +272,28 @@
 				<xsl:attribute name="context">
 					<xsl:value-of select="concat('//',$prefix,':',$className)"/>
 				</xsl:attribute>
-				<xsl:element name='sch:let'>
-					<xsl:attribute name="name">
-						<xsl:value-of select="'iwxxmVersion'"/>
-					</xsl:attribute>
-					<xsl:attribute name="value">
-						<xsl:value-of select="'namespace-uri()'"/>
-					</xsl:attribute>
-				</xsl:element>
+				<xsl:if test="substring($codeList,22,5) != 'bufr4'">
+					<!-- No need to check IWXXM version for codelist http://codes.wmo.int/bufr4 -->
+					<xsl:element name='sch:let'>
+						<xsl:attribute name="name">
+							<xsl:value-of select="'iwxxmVersion'"/>
+						</xsl:attribute>
+						<xsl:attribute name="value">
+							<xsl:value-of select="'namespace-uri()'"/>
+						</xsl:attribute>
+					</xsl:element>
+				</xsl:if>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
+						<xsl:choose>
+							<xsl:when test="substring($codeList,22,5) = 'bufr4'">
+								<!-- No need to check IWXXM version for codelist http://codes.wmo.int/bufr4 -->
+								<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@rdf:about or @nilReason')"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:attribute>
 					<xsl:value-of select="concat('Element in ',$prefix,':',$className,' should be a member of code list ',$codeList)"/>
 				</xsl:element>
@@ -332,17 +343,28 @@
 						<xsl:with-param name="selfName" select="$selfName"/>
 					</xsl:apply-templates>
 				</xsl:attribute>
-				<xsl:element name='sch:let'>
-					<xsl:attribute name="name">
-						<xsl:value-of select="'iwxxmVersion'"/>
-					</xsl:attribute>
-					<xsl:attribute name="value">
-						<xsl:value-of select="'namespace-uri()'"/>
-					</xsl:attribute>
-				</xsl:element>
+				<xsl:if test="substring($codeList,22,5) != 'bufr4'">
+					<!-- No need to check IWXXM version for codelist http://codes.wmo.int/bufr4 -->
+					<xsl:element name='sch:let'>
+						<xsl:attribute name="name">
+							<xsl:value-of select="'iwxxmVersion'"/>
+						</xsl:attribute>
+						<xsl:attribute name="value">
+							<xsl:value-of select="'namespace-uri()'"/>
+						</xsl:attribute>
+					</xsl:element>
+				</xsl:if>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
+						<xsl:choose>
+							<xsl:when test="substring($codeList,22,5) = 'bufr4'">
+								<!-- No need to check IWXXM version for codelist http://codes.wmo.int/bufr4 -->
+								<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/@rdf:about or @nilReason')"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="concat('@xlink:href = document(''',replace(substring($codeList,8),'/','-'),'.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about or @nilReason')"/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:attribute>
 					<xsl:value-of select="concat('Element in ',$prefix,':',$parentName,'/',$prefix,':',$selfName)"/>
 					<xsl:apply-templates select="//UML:Generalization/UML:ModelElement.taggedValue/UML:TaggedValue[@tag='ea_targetName' and @value=$parentName]" mode="findSrcName_codelist">
@@ -403,17 +425,28 @@
 				<xsl:attribute name="context">
 					<xsl:value-of select="concat('//',string-join($rootElementName,'|//'))"/>
 				</xsl:attribute>
-				<xsl:element name='sch:let'>
-					<xsl:attribute name="name">
-						<xsl:value-of select="'iwxxmVersion'"/>
-					</xsl:attribute>
-					<xsl:attribute name="value">
-						<xsl:value-of select="'namespace-uri()'"/>
-					</xsl:attribute>
-				</xsl:element>
+				<xsl:if test="$subpath != 'common'">
+					<!-- No need to check IWXXM version for codelist http://codes.wmo.int/common -->
+					<xsl:element name='sch:let'>
+						<xsl:attribute name="name">
+							<xsl:value-of select="'iwxxmVersion'"/>
+						</xsl:attribute>
+						<xsl:attribute name="value">
+							<xsl:value-of select="'namespace-uri()'"/>
+						</xsl:attribute>
+					</xsl:element>
+				</xsl:if>
 				<xsl:element name='sch:assert'>
 					<xsl:attribute name="test">
-						<xsl:value-of select="concat('( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-',$subpath,'-nil.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about ) else( true() ) )')"/>
+						<xsl:choose>
+							<xsl:when test="$subpath = 'common'">
+								<!-- No need to check IWXXM version for codelist http://codes.wmo.int/common -->
+								<xsl:value-of select="concat('( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-',$subpath,'-nil.rdf'')/rdf:RDF//skos:member/skos:Concept/@rdf:about ) else( true() ) )')"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="concat('( if( exists(@nilReason) ) then( @nilReason = document(''codes.wmo.int-',$subpath,'-nil.rdf'')/rdf:RDF//skos:member/skos:Concept/owl:versionInfo[@rdf:resource=$iwxxmVersion]/../@rdf:about ) else( true() ) )')"/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:attribute>
 					<xsl:value-of select="concat('IWXXM.nilReasonCheck',$subpathType,': nilReason attributes should be a member of http://codes.wmo.int/',$subpath,'/nil')"/>
 				</xsl:element>
