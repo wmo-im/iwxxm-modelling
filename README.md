@@ -1,3 +1,6 @@
+[![IWXXM Modelling Repo](https://img.shields.io/badge/repo-iwxxm--modelling-blue)](https://github.com/wmo-im/iwxxm-modelling)
+[![IWXXM Modelling Branch](https://img.shields.io/badge/branch-v2025--2-green)](https://github.com/wmo-im/iwxxm-modelling/tree/v2025-2)
+
 # IWXXM Modelling
 
 IWXXM (the ICAO Meteorological Information Exchange Model) is a data format for reporting aviation weather information in XML/GML and is specified in both XML Schema and Schematron. The model is designed using the Unified Modelling Language (UML) with Sparx Enterprise Architect (EA) and transformed into a GML Application Schema through a generator in EA.
