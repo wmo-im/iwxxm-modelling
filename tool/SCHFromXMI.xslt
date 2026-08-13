@@ -423,7 +423,7 @@
 			</xsl:attribute>
 			<xsl:element name='sch:rule'>
 				<xsl:attribute name="context">
-					<xsl:value-of select="concat('//',string-join($rootElementName,'|//'))"/>
+					<xsl:value-of select="concat('//',$prefix,':',string-join($rootElementName,concat('|//',$prefix,':')),'|//',$prefix,':',string-join($rootElementName,concat('//iwxxm:*|//',$prefix,':')))"/>
 				</xsl:attribute>
 				<xsl:if test="$subpath != 'common'">
 					<!-- No need to check IWXXM version for codelist http://codes.wmo.int/common -->

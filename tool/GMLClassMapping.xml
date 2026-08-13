@@ -137,7 +137,6 @@
 	<Class name="TP_DirectedSolid" propertyType="gml:DirectedTopoSolidPropertyType"/>
 	<Class name="TP_Complex" element="gml:TopoComplex" type="gml:TopoComplexType" propertyType="gml:TopoComplexMemberType"/>
 	<!-- ISO 19108 -->
-
 	<!-- Replaced with an IWXXM-specific PropertyType in IWXXM 3 -->
 	<!-- <Class name="TM_Object" element="gml:AbstractTimeObject" type="gml:AbstractTimeObjectType" propertyType="#APT#"/> -->
 	<Class name="TM_Object" element="gml:AbstractTimeObject" type="gml:AbstractTimeObjectType" propertyType="iwxxm:AbstractTimeObjectPropertyType"/>
@@ -221,7 +220,7 @@
 	<Class name="ObservableProperty" element="opm:ObservableProperty" type="opm:ObservablePropertyType" propertyType="opm:ObservablePropertyType"/>
 	<Class name="RangeBounds" element="metce:RangeBounds" type="metce:RangeBoundsType" propertyType="metce:RangeBoundsPropertyType"/>
 	-->
-	<!-- ICAO IWXXM 2024-x -->
+	<!-- ICAO IWXXM 2025-2 -->
 	<!-- METAR/SPECI -->
 	<!-- <Class name="MeteorologicalAerodromeObservationReport" type="iwxxm:MeteorologicalAerodromeObservationReportType" propertyType="iwxxm:MeteorologicalAerodromeObservationReportPropertyType"/> -->
 	<Class name="MeteorologicalAerodromeTrendForecast" type="iwxxm:MeteorologicalAerodromeTrendForecastType" propertyType="iwxxm:MeteorologicalAerodromeTrendForecastPropertyType"/>
